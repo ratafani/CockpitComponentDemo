@@ -10,7 +10,7 @@ public class CockpitEntity: Entity {
     private let logger = ILLogger(subsystem: .app, category: "CockpitEntity")
     
     public enum NodeName: String, CaseIterable {
-        case sidestick = "SC_SideStickL_Rig_V01"
+        case sidestick = "SC_SideStickL_V01"
         case throttleLeft = "CP_ThrottleL_Lever_Rig_V01"
         case throttleRight = "CP_ThrottleR_Lever_Rig_V01"
     }
