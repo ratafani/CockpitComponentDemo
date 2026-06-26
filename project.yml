@@ -1,0 +1,29 @@
+name: CockpitComponentDemo
+options:
+  bundleIdPrefix: IL.Spatial
+packages:
+  RealityKitContent:
+    path: Packages/RealityKitContent
+  SevereWeatherShared:
+    path: Packages/SevereWeatherShared
+  SevereWeatherUI:
+    path: Packages/SevereWeatherUI
+targets:
+  CockpitComponentDemo:
+    type: application
+    platform: visionOS
+    deploymentTarget: "2.0"
+    sources: 
+      - path: CockpitComponentDemo
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: IL.Spatial.CockpitComponentDemo
+      INFOPLIST_FILE: CockpitComponentDemo/Info.plist
+      GENERATE_INFOPLIST_FILE: YES
+      ENABLE_PREVIEWS: YES
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      CODE_SIGN_STYLE: Automatic
+      DEVELOPMENT_TEAM: C7M2QQ2D3A
+    dependencies:
+      - package: RealityKitContent
+      - package: SevereWeatherShared
+      - package: SevereWeatherUI

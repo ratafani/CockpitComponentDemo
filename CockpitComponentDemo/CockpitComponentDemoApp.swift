@@ -6,35 +6,23 @@
 //
 
 import SwiftUI
+import SevereWeatherUI
 
 @main
 struct CockpitComponentDemoApp: App {
     
-    @State private var appModel = AppModel()
-    @State private var avPlayerViewModel = AVPlayerViewModel()
+    @State private var coordinator = AppCoordinator()
     
     var body: some Scene {
         WindowGroup {
-            if avPlayerViewModel.isPlaying {
-                AVPlayerView(viewModel: avPlayerViewModel)
-            } else {
-                ContentView()
-                    .environment(appModel)
-            }
+            RootCoordinatorView(coordinator: coordinator)
         }
+        .windowStyle(.plain) // Use plain window style for a cleaner look with glass background
         
-        ImmersiveSpace(id: appModel.immersiveSpaceID) {
-            ImmersiveView()
-                .environment(appModel)
-                .onAppear {
-                    appModel.immersiveSpaceState = .open
-                    avPlayerViewModel.play()
-                }
-                .onDisappear {
-                    appModel.immersiveSpaceState = .closed
-                    avPlayerViewModel.reset()
-                }
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveSimulationView()
         }
         .immersionStyle(selection: .constant(.full), in: .full)
+        .upperLimbVisibility(.hidden)
     }
 }

@@ -3,223 +3,191 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F6B5A4232FEE2C81004337BA /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F6B5A4222FEE2C81004337BA /* RealityKitContent */; };
+		3E575D2465B68F1655341445 /* SevereWeatherShared in Frameworks */ = {isa = PBXBuildFile; productRef = 6AB9A7DE513610B12AC10BA9 /* SevereWeatherShared */; };
+		55FD75F4B3F1350AF5836E47 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = E5441092D9F14A334F015CDD /* RealityKitContent */; };
+		C6271223FCC00B79D0056356 /* SevereWeatherUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0D47738102F77B926941F0DE /* SevereWeatherUI */; };
+		CB62E46182E03B630608EFF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281002B0FAB05AF3E00E9F1 /* Assets.xcassets */; };
+		F409578D64A42DE05BF8085B /* CockpitComponentDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E92AB49DB1322FCAC03E /* CockpitComponentDemoApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F6B5A41D2FEE2C81004337BA /* CockpitComponentDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CockpitComponentDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6B5A4212FEE2C81004337BA /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		513F5A118435889FC5D5A15C /* SevereWeatherUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SevereWeatherUI; path = Packages/SevereWeatherUI; sourceTree = SOURCE_ROOT; };
+		5281002B0FAB05AF3E00E9F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		955FAA9D5ED4C1103158624A /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RealityKitContent; path = Packages/RealityKitContent; sourceTree = SOURCE_ROOT; };
+		A07FE55CC233A3B1C46C0DB8 /* CockpitComponentDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CockpitComponentDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBB6119ED41FEA7BC7DCFEA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE09E92AB49DB1322FCAC03E /* CockpitComponentDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CockpitComponentDemoApp.swift; sourceTree = "<group>"; };
+		FA29B1FB89AE8029C84BBFC7 /* SevereWeatherShared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SevereWeatherShared; path = Packages/SevereWeatherShared; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F6B5A4352FEE2C82004337BA /* Exceptions for "CockpitComponentDemo" folder in "CockpitComponentDemo" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = F6B5A41C2FEE2C81004337BA /* CockpitComponentDemo */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		F6B5A41F2FEE2C81004337BA /* CockpitComponentDemo */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F6B5A4352FEE2C82004337BA /* Exceptions for "CockpitComponentDemo" folder in "CockpitComponentDemo" target */,
-			);
-			path = CockpitComponentDemo;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
-		F6B5A41A2FEE2C81004337BA /* Frameworks */ = {
+		E1B6D9B34CF9F00887F03243 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6B5A4232FEE2C81004337BA /* RealityKitContent in Frameworks */,
+				55FD75F4B3F1350AF5836E47 /* RealityKitContent in Frameworks */,
+				3E575D2465B68F1655341445 /* SevereWeatherShared in Frameworks */,
+				C6271223FCC00B79D0056356 /* SevereWeatherUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F6B5A4142FEE2C81004337BA = {
+		2BD189CF9CF9C5669E13C3E5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				F6B5A41F2FEE2C81004337BA /* CockpitComponentDemo */,
-				F6B5A4202FEE2C81004337BA /* Packages */,
-				F6B5A41E2FEE2C81004337BA /* Products */,
+				955FAA9D5ED4C1103158624A /* RealityKitContent */,
+				FA29B1FB89AE8029C84BBFC7 /* SevereWeatherShared */,
+				513F5A118435889FC5D5A15C /* SevereWeatherUI */,
 			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
-		F6B5A41E2FEE2C81004337BA /* Products */ = {
+		37093F845E8961A3294BC4CD /* CockpitComponentDemo */ = {
 			isa = PBXGroup;
 			children = (
-				F6B5A41D2FEE2C81004337BA /* CockpitComponentDemo.app */,
+				5281002B0FAB05AF3E00E9F1 /* Assets.xcassets */,
+				EE09E92AB49DB1322FCAC03E /* CockpitComponentDemoApp.swift */,
+				BBB6119ED41FEA7BC7DCFEA1 /* Info.plist */,
+			);
+			path = CockpitComponentDemo;
+			sourceTree = "<group>";
+		};
+		831DBCD48C9685CB5D36D140 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A07FE55CC233A3B1C46C0DB8 /* CockpitComponentDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F6B5A4202FEE2C81004337BA /* Packages */ = {
+		E45F567BD7A8578F073ACF8D = {
 			isa = PBXGroup;
 			children = (
-				F6B5A4212FEE2C81004337BA /* RealityKitContent */,
+				37093F845E8961A3294BC4CD /* CockpitComponentDemo */,
+				2BD189CF9CF9C5669E13C3E5 /* Packages */,
+				831DBCD48C9685CB5D36D140 /* Products */,
 			);
-			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F6B5A41C2FEE2C81004337BA /* CockpitComponentDemo */ = {
+		AB7A9D8F280B968DF447E7A9 /* CockpitComponentDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F6B5A4362FEE2C82004337BA /* Build configuration list for PBXNativeTarget "CockpitComponentDemo" */;
+			buildConfigurationList = 6BEAE7D82BB223834F2178D4 /* Build configuration list for PBXNativeTarget "CockpitComponentDemo" */;
 			buildPhases = (
-				F6B5A4192FEE2C81004337BA /* Sources */,
-				F6B5A41A2FEE2C81004337BA /* Frameworks */,
-				F6B5A41B2FEE2C81004337BA /* Resources */,
+				3A2C523AA576E896E7028C39 /* Sources */,
+				5F9472A9DA79D2186E8DABA1 /* Resources */,
+				E1B6D9B34CF9F00887F03243 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				F6B5A41F2FEE2C81004337BA /* CockpitComponentDemo */,
-			);
 			name = CockpitComponentDemo;
 			packageProductDependencies = (
-				F6B5A4222FEE2C81004337BA /* RealityKitContent */,
+				E5441092D9F14A334F015CDD /* RealityKitContent */,
+				6AB9A7DE513610B12AC10BA9 /* SevereWeatherShared */,
+				0D47738102F77B926941F0DE /* SevereWeatherUI */,
 			);
 			productName = CockpitComponentDemo;
-			productReference = F6B5A41D2FEE2C81004337BA /* CockpitComponentDemo.app */;
+			productReference = A07FE55CC233A3B1C46C0DB8 /* CockpitComponentDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F6B5A4152FEE2C81004337BA /* Project object */ = {
+		056F8FD65F00100648F5FD76 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2650;
-				LastUpgradeCheck = 2650;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					F6B5A41C2FEE2C81004337BA = {
-						CreatedOnToolsVersion = 26.5;
+					AB7A9D8F280B968DF447E7A9 = {
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = F6B5A4182FEE2C81004337BA /* Build configuration list for PBXProject "CockpitComponentDemo" */;
+			buildConfigurationList = 2AA8810EF27208E59247B85A /* Build configuration list for PBXProject "CockpitComponentDemo" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = F6B5A4142FEE2C81004337BA;
+			mainGroup = E45F567BD7A8578F073ACF8D;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
-			productRefGroup = F6B5A41E2FEE2C81004337BA /* Products */;
+			packageReferences = (
+				409B2C8CDFD84D36C2680217 /* XCLocalSwiftPackageReference "Packages/RealityKitContent" */,
+				46D734F895A2E4A9A1F47C4D /* XCLocalSwiftPackageReference "Packages/SevereWeatherShared" */,
+				0D1AD741633D28D459316DF0 /* XCLocalSwiftPackageReference "Packages/SevereWeatherUI" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F6B5A41C2FEE2C81004337BA /* CockpitComponentDemo */,
+				AB7A9D8F280B968DF447E7A9 /* CockpitComponentDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F6B5A41B2FEE2C81004337BA /* Resources */ = {
+		5F9472A9DA79D2186E8DABA1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB62E46182E03B630608EFF0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F6B5A4192FEE2C81004337BA /* Sources */ = {
+		3A2C523AA576E896E7028C39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F409578D64A42DE05BF8085B /* CockpitComponentDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		F6B5A4372FEE2C82004337BA /* Debug */ = {
+		5A5C978045CB75F871C576AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52RX5R54N7;
+				DEVELOPMENT_TEAM = S8QWSSL8FP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_FILE = CockpitComponentDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = IL.Spatial.CockpitComponentDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SDKROOT = xros;
 				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
-		F6B5A4382FEE2C82004337BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52RX5R54N7;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = IL.Spatial.CockpitComponentDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 7;
-			};
-			name = Release;
-		};
-		F6B5A4392FEE2C82004337BA /* Debug */ = {
+		D9738DC437A671B497AC565D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -247,17 +215,15 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 52RX5R54N7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -265,25 +231,25 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				XROS_DEPLOYMENT_TARGET = 26.5;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		F6B5A43A2FEE2C82004337BA /* Release */ = {
+		DE472550114827CAEBDA625A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -311,11 +277,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 52RX5R54N7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -323,45 +287,88 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 26.5;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E569DDF83F930C1DCC8E338B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S8QWSSL8FP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CockpitComponentDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = IL.Spatial.CockpitComponentDemo;
+				SDKROOT = xros;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F6B5A4182FEE2C81004337BA /* Build configuration list for PBXProject "CockpitComponentDemo" */ = {
+		2AA8810EF27208E59247B85A /* Build configuration list for PBXProject "CockpitComponentDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F6B5A4392FEE2C82004337BA /* Debug */,
-				F6B5A43A2FEE2C82004337BA /* Release */,
+				D9738DC437A671B497AC565D /* Debug */,
+				DE472550114827CAEBDA625A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		F6B5A4362FEE2C82004337BA /* Build configuration list for PBXNativeTarget "CockpitComponentDemo" */ = {
+		6BEAE7D82BB223834F2178D4 /* Build configuration list for PBXNativeTarget "CockpitComponentDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F6B5A4372FEE2C82004337BA /* Debug */,
-				F6B5A4382FEE2C82004337BA /* Release */,
+				5A5C978045CB75F871C576AF /* Debug */,
+				E569DDF83F930C1DCC8E338B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		0D1AD741633D28D459316DF0 /* XCLocalSwiftPackageReference "Packages/SevereWeatherUI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/SevereWeatherUI;
+		};
+		409B2C8CDFD84D36C2680217 /* XCLocalSwiftPackageReference "Packages/RealityKitContent" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/RealityKitContent;
+		};
+		46D734F895A2E4A9A1F47C4D /* XCLocalSwiftPackageReference "Packages/SevereWeatherShared" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/SevereWeatherShared;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		F6B5A4222FEE2C81004337BA /* RealityKitContent */ = {
+		0D47738102F77B926941F0DE /* SevereWeatherUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SevereWeatherUI;
+		};
+		6AB9A7DE513610B12AC10BA9 /* SevereWeatherShared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SevereWeatherShared;
+		};
+		E5441092D9F14A334F015CDD /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = F6B5A4152FEE2C81004337BA /* Project object */;
+	rootObject = 056F8FD65F00100648F5FD76 /* Project object */;
 }
