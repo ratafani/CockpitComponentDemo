@@ -1,0 +1,451 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (494.100.6)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["ORM_Texture", "DefaultMaterial", "UnlitMaterial", "Cockpit_Material"]
+    def Material "ORM_Texture"
+    {
+        reorder nameChildren = ["PreviewSurface", "Image2D", "ConstantImageFile", "NodeGraph"]
+        asset inputs:BaseTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-599.04816, -68.82435)
+                }
+            }
+        )
+        float inputs:MetalStrenght = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-547.7846, 206.86542)
+                }
+            }
+        )
+        asset inputs:NormalTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-676.08856, 391.1787)
+                }
+            }
+        )
+        asset inputs:ORMTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-569.2741, 77.0113)
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/ORM_Texture/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.25, 100.5)
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor.connect = </Root/ORM_Texture/Multiply.outputs:out>
+            float inputs:metallic.connect = </Root/ORM_Texture/Min.outputs:out>
+            float3 inputs:normal.connect = </Root/ORM_Texture/Image.outputs:out>
+            float inputs:opacity
+            float inputs:roughness.connect = </Root/ORM_Texture/NodeGraph.outputs:Rough>
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (93.5, 100.5)
+            int ui:nodegraph:node:stackingOrder = 2
+        }
+
+        def Shader "Image2D"
+        {
+            uniform token info:id = "ND_RealityKitTexture2D_color3"
+            asset inputs:file.connect = </Root/ORM_Texture.inputs:BaseTexture>
+            bool inputs:no_flip_v = 1
+            string inputs:u_wrap_mode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-306.6452, -200.86551)
+            int ui:nodegraph:node:stackingOrder = 25
+        }
+
+        def NodeGraph "NodeGraph" (
+            active = true
+        )
+        {
+            asset inputs:ORM_Texture (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-265.16406, 78.75391)
+                        int stackingOrderInSubgraph = 2
+                    }
+                }
+            )
+            asset inputs:ORM_Texture.connect = </Root/ORM_Texture.inputs:ORMTexture>
+            float outputs:Metal (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (350.1029, 184.69588)
+                        int stackingOrderInSubgraph = 11
+                    }
+                }
+            )
+            float outputs:Metal.connect = </Root/ORM_Texture/NodeGraph/Separate4.outputs:outz>
+            float outputs:Occ (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (350.1029, 184.69588)
+                        int stackingOrderInSubgraph = 9
+                    }
+                }
+            )
+            float outputs:Occ.connect = </Root/ORM_Texture/NodeGraph/Separate4.outputs:outx>
+            float outputs:Rough (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (350.1029, 184.69588)
+                        int stackingOrderInSubgraph = 10
+                    }
+                }
+            )
+            float outputs:Rough.connect = </Root/ORM_Texture/NodeGraph/Separate4.outputs:outy>
+            float2 ui:nodegraph:node:pos = (-315.33136, 99.940186)
+            int ui:nodegraph:node:stackingOrder = 29
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (419.78906, 167.46161)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 10
+
+            def Shader "Image2D"
+            {
+                uniform token info:id = "ND_RealityKitTexture2D_vector4"
+                asset inputs:file.connect = </Root/ORM_Texture/NodeGraph.inputs:ORM_Texture>
+                bool inputs:no_flip_v = 1
+                float4 outputs:out
+                float2 ui:nodegraph:node:pos = (-3.8037038, 53.422535)
+                int ui:nodegraph:node:stackingOrder = 7
+            }
+
+            def Shader "Separate4"
+            {
+                uniform token info:id = "ND_separate4_vector4"
+                float4 inputs:in.connect = </Root/ORM_Texture/NodeGraph/Image2D.outputs:out>
+                float outputs:outw
+                float outputs:outx
+                float outputs:outy
+                float outputs:outz
+                float2 ui:nodegraph:node:pos = (240.38734, 223.64146)
+                int ui:nodegraph:node:stackingOrder = 8
+            }
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_color3FA"
+            color3f inputs:in1.connect = </Root/ORM_Texture/Image2D.outputs:out>
+            float inputs:in2.connect = </Root/ORM_Texture/NodeGraph.outputs:Occ>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-95.35843, -22.998804)
+            int ui:nodegraph:node:stackingOrder = 27
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_vector3"
+            float3 inputs:default
+            asset inputs:file.connect = </Root/ORM_Texture.inputs:NormalTexture>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-292.2483, 425.18027)
+            int ui:nodegraph:node:stackingOrder = 12
+        }
+
+        def Shader "Min"
+        {
+            uniform token info:id = "ND_min_float"
+            float inputs:in1.connect = </Root/ORM_Texture/NodeGraph.outputs:Metal>
+            float inputs:in2.connect = </Root/ORM_Texture.inputs:MetalStrenght>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-134.04881, 195.61841)
+            int ui:nodegraph:node:stackingOrder = 31
+        }
+    }
+
+    def Material "DefaultMaterial"
+    {
+        reorder nameChildren = ["PreviewSurface", "Image2D", "ConstantImageFile", "NodeGraph"]
+        asset inputs:AOTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-528.02576, -0.13469188)
+                }
+            }
+        )
+        asset inputs:BaseTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-586.727, -151.30003)
+                    int stackingOrderInSubgraph = 72
+                }
+            }
+        )
+        float inputs:MetalStrenght = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-672.1319, 515.58105)
+                    int stackingOrderInSubgraph = 56
+                }
+            }
+        )
+        asset inputs:MetalTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-692.29474, 330.4942)
+                }
+            }
+        )
+        asset inputs:NormalTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-676.08856, 651.0079)
+                    int stackingOrderInSubgraph = 50
+                }
+            }
+        )
+        asset inputs:RoughnessTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-611.216, 108.70172)
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/DefaultMaterial/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:node:pos = (-72.475105, 120.26285)
+        int ui:nodegraph:node:stackingOrder = 1
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.25, 100.5)
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor.connect = </Root/DefaultMaterial/Multiply.outputs:out>
+            float inputs:metallic.connect = </Root/DefaultMaterial/Min.outputs:out>
+            float3 inputs:normal.connect = </Root/DefaultMaterial/Image.outputs:out>
+            float inputs:opacity
+            float inputs:roughness.connect = </Root/DefaultMaterial/Image_1.outputs:out>
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (93.5, 100.5)
+            int ui:nodegraph:node:stackingOrder = 2
+        }
+
+        def Shader "Image2D"
+        {
+            uniform token info:id = "ND_RealityKitTexture2D_color3"
+            asset inputs:file.connect = </Root/DefaultMaterial.inputs:BaseTexture>
+            bool inputs:no_flip_v = 1
+            string inputs:u_wrap_mode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-280.61047, -263.53992)
+            int ui:nodegraph:node:stackingOrder = 70
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_color3FA"
+            color3f inputs:in1.connect = </Root/DefaultMaterial/Image2D.outputs:out>
+            float inputs:in2.connect = </Root/DefaultMaterial/Image_3.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-95.35843, -22.998804)
+            int ui:nodegraph:node:stackingOrder = 27
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_vector3"
+            float3 inputs:default
+            asset inputs:file.connect = </Root/DefaultMaterial.inputs:NormalTexture>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-291.2121, 636.89056)
+            int ui:nodegraph:node:stackingOrder = 48
+        }
+
+        def Shader "Min"
+        {
+            uniform token info:id = "ND_min_float"
+            float inputs:in1.connect = </Root/DefaultMaterial/Image_2.outputs:out>
+            float inputs:in2.connect = </Root/DefaultMaterial.inputs:MetalStrenght>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-234.83965, 487.11057)
+            int ui:nodegraph:node:stackingOrder = 58
+        }
+
+        def Shader "Image_1"
+        {
+            uniform token info:id = "ND_image_float"
+            float inputs:default
+            asset inputs:file.connect = </Root/DefaultMaterial.inputs:RoughnessTexture>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-292.45816, 137.78839)
+            int ui:nodegraph:node:stackingOrder = 66
+        }
+
+        def Shader "Image_2"
+        {
+            uniform token info:id = "ND_image_float"
+            float inputs:default
+            asset inputs:file.connect = </Root/DefaultMaterial.inputs:MetalTexture>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-409.67307, 361.36407)
+            int ui:nodegraph:node:stackingOrder = 62
+        }
+
+        def Shader "Image_3"
+        {
+            uniform token info:id = "ND_image_float"
+            float inputs:default
+            asset inputs:file.connect = </Root/DefaultMaterial.inputs:AOTexture>
+            float2 inputs:texcoord
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-305.58167, -12.415082)
+            int ui:nodegraph:node:stackingOrder = 73
+        }
+    }
+
+    def Material "UnlitMaterial"
+    {
+        asset inputs:BakedTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-370.71783, -11.325286)
+                    int stackingOrderInSubgraph = 5
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/UnlitMaterial/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (373.3162, 121.3079)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 6
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            color3f inputs:color.connect = </Root/UnlitMaterial/Image2D.outputs:out>
+            bool inputs:hasPremultipliedAlpha
+            float inputs:opacity
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (118.5885, 157.3495)
+            int ui:nodegraph:node:stackingOrder = 4
+        }
+
+        def Shader "Image2D"
+        {
+            uniform token info:id = "ND_RealityKitTexture2D_color3"
+            asset inputs:file.connect = </Root/UnlitMaterial.inputs:BakedTexture>
+            bool inputs:no_flip_v = 1
+            string inputs:u_wrap_mode
+            string inputs:v_wrap_mode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-116.98362, 71.82049)
+            int ui:nodegraph:node:stackingOrder = 2
+        }
+    }
+
+    def Material "Cockpit_Material"
+    {
+        reorder nameChildren = ["PreviewSurface", "Image2D", "ConstantImageFile", "NodeGraph"]
+        color3f inputs:ConstantColor3 = (0, 0, 0) (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-277.52734, -62.839844)
+                }
+            }
+        )
+        float inputs:MetalStrenght = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-672.1319, 515.58105)
+                    int stackingOrderInSubgraph = 56
+                }
+            }
+        )
+        asset inputs:MetalTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-692.29474, 330.4942)
+                }
+            }
+        )
+        asset inputs:NormalTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-676.08856, 651.0079)
+                    int stackingOrderInSubgraph = 50
+                }
+            }
+        )
+        asset inputs:RoughnessTexture = @@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-611.216, 108.70172)
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/Cockpit_Material/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:node:pos = (-52.475105, 140.26285)
+        int ui:nodegraph:node:stackingOrder = 2
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.25, 100.5)
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor.connect = </Root/Cockpit_Material.inputs:ConstantColor3>
+            float inputs:metallic.connect = </Root/Cockpit_Material/Min.outputs:out>
+            float3 inputs:normal.connect = </Root/Cockpit_Material/Image.outputs:out>
+            float inputs:opacity
+            float inputs:roughness.connect = </Root/Cockpit_Material/Image_1.outputs:out>
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (93.5, 100.5)
+            int ui:nodegraph:node:stackingOrder = 2
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_vector3"
+            float3 inputs:default
+            asset inputs:file.connect = </Root/Cockpit_Material.inputs:NormalTexture>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-291.2121, 636.89056)
+            int ui:nodegraph:node:stackingOrder = 48
+        }
+
+        def Shader "Min"
+        {
+            uniform token info:id = "ND_min_float"
+            float inputs:in1.connect = </Root/Cockpit_Material/Image_2.outputs:out>
+            float inputs:in2.connect = </Root/Cockpit_Material.inputs:MetalStrenght>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-234.83965, 487.11057)
+            int ui:nodegraph:node:stackingOrder = 58
+        }
+
+        def Shader "Image_1"
+        {
+            uniform token info:id = "ND_image_float"
+            float inputs:default
+            asset inputs:file.connect = </Root/Cockpit_Material.inputs:RoughnessTexture>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-292.45816, 137.78839)
+            int ui:nodegraph:node:stackingOrder = 66
+        }
+
+        def Shader "Image_2"
+        {
+            uniform token info:id = "ND_image_float"
+            float inputs:default
+            asset inputs:file.connect = </Root/Cockpit_Material.inputs:MetalTexture>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-409.67307, 361.36407)
+            int ui:nodegraph:node:stackingOrder = 62
+        }
+    }
+}
+
