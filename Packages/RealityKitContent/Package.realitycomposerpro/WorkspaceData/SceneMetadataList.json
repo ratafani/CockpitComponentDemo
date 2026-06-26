@@ -1,4 +1,35 @@
 {
+  "057DFC64-A90F-4C4E-AF94-E498458743D2" : {
+    "objectMetadataList" : [
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit2",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "0701B343-C7AA-401B-B68A-76C3DAF412CD" : {
     "objectMetadataList" : [
       [
@@ -24,8 +55,7 @@
     "objectMetadataList" : [
       [
         "A4377E15-94D3-4E87-A038-116CED4184E0",
-        "root",
-        "SC_SideStickL_Rig_V01"
+        "root"
       ],
       {
         "isExpanded" : true,
@@ -33,7 +63,8 @@
       },
       [
         "A4377E15-94D3-4E87-A038-116CED4184E0",
-        "root"
+        "root",
+        "SC_SideStickL_Rig_V01"
       ],
       {
         "isExpanded" : true,
@@ -80,23 +111,6 @@
         "EBE7C0D0-2163-40DA-A41F-1F944586386A",
         "root",
         "Mat_ThrottleLock"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "EBE7C0D0-2163-40DA-A41F-1F944586386A",
-        "root",
-        "CP_centralPedestal_V01"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "EBE7C0D0-2163-40DA-A41F-1F944586386A",
-        "root"
       ],
       {
         "isExpanded" : true,

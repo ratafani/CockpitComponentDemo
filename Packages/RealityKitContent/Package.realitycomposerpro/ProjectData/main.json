@@ -1,5 +1,6 @@
 {
   "pathsToIds" : {
+    "\/RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/ImmersiveCockpit.usda" : "057DFC64-A90F-4C4E-AF94-E498458743D2",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Immersive.usda" : "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Sidestick_controller_L.usdc" : "A4377E15-94D3-4E87-A038-116CED4184E0",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Throttle.usdc" : "EBE7C0D0-2163-40DA-A41F-1F944586386A",
@@ -7,6 +8,7 @@
   },
   "projectID" : -1134717615095569939,
   "uuidToIntID" : {
+    "057DFC64-A90F-4C4E-AF94-E498458743D2" : 6247402169321205943,
     "0701B343-C7AA-401B-B68A-76C3DAF412CD" : 5276935801633657569,
     "A4377E15-94D3-4E87-A038-116CED4184E0" : 5697960568918785643,
     "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD" : 6074190801434611045,
