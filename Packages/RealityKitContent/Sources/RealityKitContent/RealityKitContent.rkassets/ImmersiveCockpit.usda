@@ -404,9 +404,9 @@ def Xform "Root"
         }
     }
 
-    def "Sidestick" (
+    def "Sidestick2" (
         active = true
-        prepend references = @TechArt/Mesh/Sidestick.usdc@
+        prepend references = @TechArt/Mesh/Sidestick2.usdc@
     )
     {
         quatf xformOp:orient = (4.3297803e-17, 4.3297803e-17, 0.70710677, 0.70710677)
