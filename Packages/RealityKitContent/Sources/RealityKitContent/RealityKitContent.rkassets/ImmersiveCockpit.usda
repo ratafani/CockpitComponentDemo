@@ -10,9 +10,403 @@
 
 def Xform "Root"
 {
-    def "Cockpit3" (
+    def "Cockpit4" (
         active = true
-        prepend references = @TechArt/Mesh/Cockpit3.usdc@
+        prepend references = @TechArt/Mesh/Cockpit4.usdc@
+    )
+    {
+        reorder nameChildren = ["scene", "_materials", "CP_ENG1_Switch_Rig_V01", "CP_ENG2_Switch_Rig_V01_001", "Cube_002", "CP_FireFaultR_Button_Rig_V01", "CP_ThrottleR_Lever_Rig_V01", "CP_FireFaultL_Button_Rig_V01", "CP_EngineMode_Rotate_Rig_V01", "CP_ThrottleL_Lever_Rig_V01", "env_light", "Sidestick"]
+        quatf xformOp:orient = (4.3297803e-17, 4.3297803e-17, 0.70710677, 0.70710677)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "_materials"
+        {
+            over "m0mat_003"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.003_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_003/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_003.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_003/diffuseColor.outputs:rgb>
+                }
+            }
+
+            over "m0mat_010"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_010/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.010_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_010/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_010.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "m0mat_009"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.009_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_009/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_009.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_009/diffuseColor.outputs:rgb>
+                }
+            }
+
+            over "m0mat_007"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_007/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.007_baseColor.png@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_007/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_007.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "m0mat_006"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_006/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.006_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_006/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_006.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "m0mat_004"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_004/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.004_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_004/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_004.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "m0mat"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "m0mat_005"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_005/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.005_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_005/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_005.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "m0mat_001"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.001_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_001/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_001.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_001/diffuseColor.outputs:rgb>
+                }
+            }
+
+            over "m1mat_001"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m1mat_001/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m1mat.001_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m1mat_001/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m1mat_001.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "m0mat_008"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Cockpit4/_materials/m0mat_008/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @TechArt/Texture/Cockpit4/m0mat.008_baseColor.jpg@
+                    float2 inputs:st.connect = </Root/Cockpit4/_materials/m0mat_008/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Cockpit4/_materials/m0mat_008.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor = (0.397597, 0.44635862, 0.5) (
+                        colorSpace = "srgb_displayp3"
+                    )
+                }
+            }
+
+            over "Kiri"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor = (0.26784563, 0.5116133, 0.9063318) (
+                        colorSpace = "srgb_displayp3"
+                    )
+                }
+            }
+        }
+
+        over "SC_SideStickL_Rig_V01"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-3.377070426940918, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Cube"
+            {
+                over "Cube_001"
+                {
+                    float3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+        }
+    }
+
+    def "Sidestick" (
+        active = true
+        prepend references = @TechArt/Mesh/Sidestick.usdc@
     )
     {
         quatf xformOp:orient = (4.3297803e-17, 4.3297803e-17, 0.70710677, 0.70710677)

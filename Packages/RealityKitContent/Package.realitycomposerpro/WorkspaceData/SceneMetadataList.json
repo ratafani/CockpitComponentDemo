@@ -8,6 +8,79 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4",
+        "SC_SideStickL_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4",
+        "SC_SideStickL_Rig_V01",
+        "Armature_002"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4",
+        "SC_SideStickL_Rig_V01",
+        "Armature_004"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4",
+        "Sidestick",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit3",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4",
+        "SC_SideStickL_Rig_V01",
+        "Cube"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -25,6 +98,27 @@
         "0701B343-C7AA-401B-B68A-76C3DAF412CD",
         "Root",
         "Cockpit_Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "0F51D2B6-8429-42F2-986A-AB3D854A6C9D" : {
+    "objectMetadataList" : [
+      [
+        "0F51D2B6-8429-42F2-986A-AB3D854A6C9D",
+        "root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0F51D2B6-8429-42F2-986A-AB3D854A6C9D",
+        "root",
+        "Throttle"
       ],
       {
         "isExpanded" : true,
