@@ -22,15 +22,6 @@
       [
         "057DFC64-A90F-4C4E-AF94-E498458743D2",
         "Root",
-        "Cockpit4"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "057DFC64-A90F-4C4E-AF94-E498458743D2",
-        "Root",
         "Cockpit4",
         "SC_SideStickL_Rig_V01",
         "Armature_002"
