@@ -10,13 +10,17 @@
 
 def Xform "Root"
 {
+    reorder nameChildren = ["Cockpit4", "Sidestick2", "SkyDome", "SkyMaterial"]
     def "Cockpit4" (
         active = true
-        prepend references = @TechArt/Mesh/Cockpit4.usdc@
+        customData = {
+            float3 rotationEulerHint = (-1.5707955, 3.141592, 0)
+        }
+        references = @TechArt/Mesh/Cockpit4.usdc@
     )
     {
         reorder nameChildren = ["scene", "_materials", "CP_ENG1_Switch_Rig_V01", "CP_ENG2_Switch_Rig_V01_001", "Cube_002", "CP_FireFaultR_Button_Rig_V01", "CP_ThrottleR_Lever_Rig_V01", "CP_FireFaultL_Button_Rig_V01", "CP_EngineMode_Rotate_Rig_V01", "CP_ThrottleL_Lever_Rig_V01", "env_light", "Sidestick"]
-        quatf xformOp:orient = (4.3297803e-17, 4.3297803e-17, 0.70710677, 0.70710677)
+        quatf xformOp:orient = (1.3767878e-7, -1.3767874e-7, 0.7071069, 0.70710665)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
@@ -406,13 +410,156 @@ def Xform "Root"
 
     def "Sidestick2" (
         active = true
-        prepend references = @TechArt/Mesh/Sidestick2.usdc@
+        references = @TechArt/Mesh/Sidestick2.usdc@
     )
     {
         quatf xformOp:orient = (4.3297803e-17, 4.3297803e-17, 0.70710677, 0.70710677)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Material "SkyMaterial"
+    {
+        token outputs:mtlx:surface.connect = </Root/SkyMaterial/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.5, 100.5)
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor.connect = </Root/SkyMaterial/Image.outputs:out>
+            float inputs:metallic
+            float inputs:opacity
+            float inputs:roughness
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (93.5, 100.5)
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            asset inputs:file = @Environments/citrus_orchard_puresky_4k.exr@
+            string inputs:filtertype
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-166.95703, 28.957031)
+            int ui:nodegraph:node:stackingOrder = 8
+        }
+    }
+
+    def "SkySphere" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.7453289, 0)
+        }
+        prepend references = @SkySphere.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.64278764, 0, 0.7660444, 0)
+        float3 xformOp:scale = (1, 1, 1)
+
+        over "SkySphere_mat"
+        {
+            asset inputs:SkySphere_Texture (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-754.4517, 71.84726)
+                        float2 sizeInSubgraph = (188.5, 53)
+                        int stackingOrderInSubgraph = 390
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (618.683, 228.22533)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 477
+
+            over "RealityKitTexture2D_1"
+            {
+                asset inputs:file = @Environments/citrus_orchard_puresky_4k.exr@
+                delete asset inputs:file.connect = </Root/SkySphere/SkySphere_mat.inputs:SkySphere_Texture>
+                float2 inputs:texcoord.connect = </Root/SkySphere/SkySphere_mat/Add.outputs:out>
+                string inputs:u_wrap_mode = "repeat"
+                string inputs:v_wrap_mode = "repeat"
+                float2 ui:nodegraph:node:pos = (-155.75769, 45.229126)
+                int ui:nodegraph:node:stackingOrder = 553
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = []
+            }
+
+            over "RealityKitTexture2D"
+            {
+                string inputs:border_color
+                asset inputs:file = @Environments/citrus_orchard_puresky_4k.exr@
+                delete asset inputs:file.connect = </Root/SkySphere/SkySphere_mat.inputs:SkySphere_Texture>
+                string inputs:mag_filter
+                string inputs:min_filter
+                float2 inputs:texcoord.connect = </Root/SkySphere/SkySphere_mat/Add.outputs:out>
+                string inputs:u_wrap_mode = "repeat"
+                string inputs:v_wrap_mode = "repeat"
+                float2 ui:nodegraph:node:pos = (-163.51028, 640.3602)
+                int ui:nodegraph:node:stackingOrder = 551
+            }
+
+            over "UnlitSurface"
+            {
+                float2 ui:nodegraph:node:pos = (294.56543, 353.85663)
+                int ui:nodegraph:node:stackingOrder = 481
+            }
+
+            over "Ifgreater"
+            {
+                float2 ui:nodegraph:node:pos = (51.54885, 342.2128)
+                int ui:nodegraph:node:stackingOrder = 483
+            }
+
+            def Shader "Time"
+            {
+                uniform token info:id = "ND_time_float"
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-1052.0825, 530.57776)
+                int ui:nodegraph:node:stackingOrder = 625
+            }
+
+            def Shader "Multiply"
+            {
+                uniform token info:id = "ND_multiply_float"
+                float inputs:in1.connect = </Root/SkySphere/SkySphere_mat/Time.outputs:out>
+                float inputs:in2 = 0.003
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-857.47314, 496.3473)
+                int ui:nodegraph:node:stackingOrder = 591
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2", "outputs:out"]
+            }
+
+            def Shader "Combine2"
+            {
+                uniform token info:id = "ND_combine2_vector2"
+                float inputs:in1.connect = </Root/SkySphere/SkySphere_mat/Multiply.outputs:out>
+                float inputs:in2
+                float2 outputs:out
+                float2 ui:nodegraph:node:pos = (-653.2661, 423.5387)
+                int ui:nodegraph:node:stackingOrder = 443
+            }
+
+            def Shader "Add"
+            {
+                uniform token info:id = "ND_add_vector2"
+                float2 inputs:in1.connect = </Root/SkySphere/SkySphere_mat/TextureCoordinates.outputs:out>
+                float2 inputs:in2.connect = </Root/SkySphere/SkySphere_mat/Combine2.outputs:out>
+                float2 outputs:out
+                float2 ui:nodegraph:node:pos = (-360.60593, 446.4098)
+                int ui:nodegraph:node:stackingOrder = 457
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in1"]
+            }
+
+            def Shader "TextureCoordinates"
+            {
+                uniform token info:id = "ND_texcoord_vector2"
+                float2 outputs:out
+                float2 ui:nodegraph:node:pos = (-583.92236, 589.5465)
+                int ui:nodegraph:node:stackingOrder = 507
+            }
+        }
     }
 }
 
