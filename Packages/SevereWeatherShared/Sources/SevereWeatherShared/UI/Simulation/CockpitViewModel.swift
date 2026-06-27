@@ -15,6 +15,11 @@ public class CockpitViewModel {
     public var leftFingerStatus: [Bool] = [false, false, false, false]
     public var rightFingerStatus: [Bool] = [false, false, false, false]
     
+    public var isSidestickGrabbed: Bool = false
+    public var isThrottleGrabbed: Bool = false
+    public var sidestickDisplacement: SIMD2<Float> = .zero
+    public var throttleValue: Float = 0.0
+    
     public init() {}
     
     public func cleanupScene() {

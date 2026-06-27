@@ -8,7 +8,7 @@ public class CockpitInteractionSystem: System {
     // Store reference pinch positions and rotations to calculate deltas
     private var initialLeftPinchPos: SIMD3<Float>?
     private var initialRightPinchPos: SIMD3<Float>?
-    private var throttleGrabRotation: simd_quatf?
+    private var throttleValueAtGrabStart: Float = 0.0
     
     public required init(scene: RealityKit.Scene) {}
     
@@ -41,16 +41,31 @@ public class CockpitInteractionSystem: System {
                     let clampedPitch = max(-Float.pi/9, min(Float.pi/9, pitchAngle))
                     let clampedRoll = max(-Float.pi/9, min(Float.pi/9, rollAngle))
                     
-                    if let initialRot = cockpit.initialSidestickTransform?.rotation {
-                        let rotation = simd_quatf(angle: clampedPitch, axis: [1, 0, 0]) * simd_quatf(angle: -clampedRoll, axis: [0, 0, 1])
+                    let rotation = simd_quatf(angle: clampedPitch, axis: [1, 0, 0]) * simd_quatf(angle: clampedRoll, axis: [0, 1, 0])
+                    
+                    if let model = cockpit.sidestickModelEntity, let jointIndex = cockpit.sidestickJointIndex, model.jointNames.count > jointIndex {
+                        // For a Skinned Mesh, apply rotation to the specific joint
+                        model.jointTransforms[jointIndex].rotation = rotation
+                    } else if let initialRot = cockpit.initialSidestickTransform?.rotation {
+                        // Fallback for rigid mesh: rotate the entity
                         cockpit.sidestickEntity?.transform.rotation = initialRot * rotation
                     }
+                    
+                    // Update displacement
+                    cockpit.normalizedDisplacement = SIMD2<Float>(
+                        max(-1, min(1, delta.x / 0.1)),
+                        max(-1, min(1, delta.z / 0.1))
+                    )
                 }
             } else {
                 cockpit.isSidestickGrabbed = false
+                cockpit.normalizedDisplacement = .zero
                 initialLeftPinchPos = nil
                 // Spring loaded: return to center smoothly
-                if let currentRotation = cockpit.sidestickEntity?.transform.rotation,
+                if let model = cockpit.sidestickModelEntity, let jointIndex = cockpit.sidestickJointIndex, model.jointNames.count > jointIndex {
+                    let currentRotation = model.jointTransforms[jointIndex].rotation
+                    model.jointTransforms[jointIndex].rotation = simd_slerp(currentRotation, simd_quatf(angle: 0, axis: [1,0,0]), 0.15)
+                } else if let currentRotation = cockpit.sidestickEntity?.transform.rotation,
                    let initialRot = cockpit.initialSidestickTransform?.rotation {
                     cockpit.sidestickEntity?.transform.rotation = simd_slerp(currentRotation, initialRot, 0.15)
                 }
@@ -61,23 +76,33 @@ public class CockpitInteractionSystem: System {
                 if !cockpit.isThrottleGrabbed {
                     cockpit.isThrottleGrabbed = true
                     initialRightPinchPos = hands.rightPinchPosition
-                    throttleGrabRotation = cockpit.throttleEntity?.transform.rotation
+                    throttleValueAtGrabStart = cockpit.throttleValue
                 }
                 
-                if let initialPos = initialRightPinchPos, let baseRot = throttleGrabRotation {
+                if let initialPos = initialRightPinchPos {
                     let delta = hands.rightPinchPosition - initialPos
-                    let pitchAngle = (delta.z / 0.1) * (Float.pi / 4)
-                    let clampedPitch = max(-Float.pi/4, min(Float.pi/4, pitchAngle))
                     
-                    let rotation = simd_quatf(angle: clampedPitch, axis: [1, 0, 0])
-                    cockpit.throttleEntity?.transform.rotation = baseRot * rotation
+                    // User explicitly requested moving hand forward/backward relative to body.
+                    // In ARKit, negative Z (-Z) is forward, positive Z (+Z) is backward.
+                    // Moving hand straight forward (-Z) pushes throttle to 100%.
+                    // We divide by 0.25 (25cm) to scale the movement.
+                    let movementDelta = -(delta.z / 0.25)
+                    
+                    cockpit.throttleValue = max(0.0, min(1.0, throttleValueAtGrabStart + movementDelta))
+                    
+                    // Apply rotation. Throttle rotates from -pi/4 to pi/4.
+                    let currentPitch = (0.5 - cockpit.throttleValue) * (Float.pi / 2)
+                    let rotation = simd_quatf(angle: currentPitch, axis: [1, 0, 0])
+                    
+                    if let initialRot = cockpit.initialThrottleTransform?.rotation {
+                        cockpit.throttleEntity?.transform.rotation = initialRot * rotation
+                    }
                 }
             } else {
                 cockpit.isThrottleGrabbed = false
                 initialRightPinchPos = nil
-                throttleGrabRotation = nil
-                // Throttle stays where it was left (no spring)
             }
+
             
             entity.components.set(cockpit)
         }

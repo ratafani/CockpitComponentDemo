@@ -12,17 +12,53 @@ public struct ImmersiveSimulationView: View {
     
     public var body: some View {
         RealityView { content, attachments in
+            print("[Attachments] 🛠️ RealityView make closure started.")
+            
+            // Create a head anchor so UI follows the user's gaze
+            let headAnchor = AnchorEntity(.head)
+            headAnchor.name = "HeadAnchor"
+            content.add(headAnchor)
+            
             subscription = await CockpitSimulationBuilder.setupWorld(content: content, viewModel: viewModel)
+            
+            if let compassEntity = attachments.entity(for: "SidestickCompass") {
+                // Position closer to center-left
+                compassEntity.position = [-0.15, -0.1, -0.5] 
+                headAnchor.addChild(compassEntity)
+            }
+            
+            if let throttleEntity = attachments.entity(for: "ThrottleStatus") {
+                // Position closer to center-right
+                throttleEntity.position = [0.15, -0.1, -0.5] 
+                headAnchor.addChild(throttleEntity)
+            }
         } update: { content, attachments in
-            if let attachmentEntity = attachments.entity(for: "FingerStatus") {
-                if attachmentEntity.parent == nil {
-                    attachmentEntity.position = [0, 1.3, -0.8]
-                    viewModel.rootEntity.addChild(attachmentEntity)
+            let headAnchor = content.entities.first { $0.name == "HeadAnchor" }
+            
+            if let compassEntity = attachments.entity(for: "SidestickCompass"), let head = headAnchor {
+                if compassEntity.parent != head {
+                    compassEntity.position = [-0.15, -0.1, -0.5] 
+                    head.addChild(compassEntity)
                 }
             }
+            
+            if let throttleEntity = attachments.entity(for: "ThrottleStatus"), let head = headAnchor {
+                if throttleEntity.parent != head {
+                    throttleEntity.position = [0.15, -0.1, -0.5] 
+                    head.addChild(throttleEntity)
+                }
+            }
+
         } attachments: {
-            Attachment(id: "FingerStatus") {
-                FingerStatusView(viewModel: viewModel)
+            Attachment(id: "SidestickCompass") {
+                SidestickCompassView(displacement: viewModel.sidestickDisplacement)
+                    .opacity(viewModel.isSidestickGrabbed ? 1.0 : 0.0)
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.isSidestickGrabbed)
+            }
+            Attachment(id: "ThrottleStatus") {
+                ThrottleStatusView(throttleValue: viewModel.throttleValue)
+                    .opacity(viewModel.isThrottleGrabbed ? 1.0 : 0.0)
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.isThrottleGrabbed)
             }
         }
         .task {
@@ -36,42 +72,5 @@ public struct ImmersiveSimulationView: View {
             subscription?.cancel()
             viewModel.cleanupScene()
         }
-    }
-}
-
-struct FingerStatusView: View {
-    var viewModel: CockpitViewModel
-    
-    var body: some View {
-        HStack(spacing: 40) {
-            HandStatusView(title: "Left Hand", statuses: viewModel.leftFingerStatus)
-            HandStatusView(title: "Right Hand", statuses: viewModel.rightFingerStatus)
-        }
-        .padding(24)
-        .background(.ultraThinMaterial)
-        .cornerRadius(20)
-    }
-}
-
-struct HandStatusView: View {
-    let title: String
-    let statuses: [Bool]
-    let fingerNames = ["Index", "Middle", "Ring", "Little"]
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(title).font(.title3).bold()
-            ForEach(0..<4, id: \.self) { i in
-                HStack {
-                    Text(fingerNames[i])
-                        .font(.body)
-                    Spacer()
-                    Image(systemName: statuses[i] ? "checkmark.circle.fill" : "xmark.circle.fill")
-                        .foregroundColor(statuses[i] ? .green : .red)
-                        .font(.title2)
-                }
-            }
-        }
-        .frame(width: 160)
     }
 }

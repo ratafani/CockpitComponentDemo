@@ -32,11 +32,17 @@ public enum CockpitSimulationBuilder {
             viewModel.rootEntity.addChild(handsEntity)
             content.add(viewModel.rootEntity)
             
-            // 3. Sync ECS State to SwiftUI ViewModel (Example)
+            // 3. Sync ECS State to SwiftUI ViewModel
             let subscription = content.subscribe(to: SceneEvents.Update.self) { event in
                 if let handComp = handsEntity.components[HandModelComponent.self] {
                     viewModel.leftFingerStatus = handComp.leftFingerStatus
                     viewModel.rightFingerStatus = handComp.rightFingerStatus
+                }
+                if let cockpitComp = cockpitEntity.components[CockpitComponent.self] {
+                    viewModel.isSidestickGrabbed = cockpitComp.isSidestickGrabbed
+                    viewModel.isThrottleGrabbed = cockpitComp.isThrottleGrabbed
+                    viewModel.sidestickDisplacement = cockpitComp.normalizedDisplacement
+                    viewModel.throttleValue = cockpitComp.throttleValue
                 }
             }
             
