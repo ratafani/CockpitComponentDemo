@@ -3,6 +3,7 @@
     "\/RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Environments\/Untitled%20Scene.usda" : "8408241D-F515-4D20-A995-6D8473352A1E",
     "\/RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/ImmersiveCockpit.usda" : "057DFC64-A90F-4C4E-AF94-E498458743D2",
     "\/RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/SkySunny.usda" : "A226A7CB-97E6-4788-8A74-33217624D476",
+    "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Cloud.usdc" : "02788A2F-C4DB-43C1-A74C-8B001F140070",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Immersive.usda" : "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/ImmersiveCockpit.usda" : "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Cockpit4.usdc" : "0F51D2B6-8429-42F2-986A-AB3D854A6C9D",
@@ -13,6 +14,7 @@
   },
   "projectID" : -1134717615095569939,
   "uuidToIntID" : {
+    "02788A2F-C4DB-43C1-A74C-8B001F140070" : 714462258876655166,
     "057DFC64-A90F-4C4E-AF94-E498458743D2" : 6247402169321205943,
     "0701B343-C7AA-401B-B68A-76C3DAF412CD" : 5276935801633657569,
     "0F51D2B6-8429-42F2-986A-AB3D854A6C9D" : 5194560530323450491,

@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Cockpit4", "Sidestick2", "SkyDome", "SkyMaterial"]
+    reorder nameChildren = ["Cockpit4", "Sidestick2", "SkySphere_mat", "SkySphere", "SkyDome", "ocean_ground"]
     def "Cockpit4" (
         active = true
         customData = {
@@ -419,42 +419,159 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def Material "SkyMaterial"
+    def Material "SkySphere_mat" (
+        references = </Root/SkySphere/SkySphere_mat>
+    )
     {
-        token outputs:mtlx:surface.connect = </Root/SkyMaterial/PreviewSurface.outputs:out>
+        reorder nameChildren = ["UnlitSurface", "Image", "Ramptb", "Apply_Post_Process_Tone_Map"]
+        asset inputs:SkySphere_Texture = @0/OrientationCube_latlong.exr@ (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-754.4517, 71.84726)
+                    float2 sizeInSubgraph = (188.5, 53)
+                    int stackingOrderInSubgraph = 389
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/SkySphere_mat/UnlitSurface.outputs:out>
         token outputs:realitykit:vertex
-        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.5, 100.5)
+        float2 ui:nodegraph:node:pos = (916.5, 691.75)
+        int ui:nodegraph:node:stackingOrder = 1
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (414.09708, 211.67845)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 340
 
-        def Shader "PreviewSurface"
+        def Shader "UnlitSurface"
         {
-            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
-            color3f inputs:diffuseColor.connect = </Root/SkyMaterial/Image.outputs:out>
-            float inputs:metallic
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap = 0
+            color3f inputs:color.connect = </Root/SkySphere_mat/Ifgreater.outputs:out>
+            bool inputs:hasPremultipliedAlpha
             float inputs:opacity
-            float inputs:roughness
+            float inputs:opacityThreshold
             token outputs:out
-            float2 ui:nodegraph:node:pos = (93.5, 100.5)
+            float2 ui:nodegraph:node:pos = (179.16739, 212.58861)
+            float2 ui:nodegraph:node:size = (194.5, 181)
+            int ui:nodegraph:node:stackingOrder = 340
         }
 
-        def Shader "Image"
+        def Shader "RealityKitTexture2D" (
+            references = None
+        )
         {
-            uniform token info:id = "ND_image_color3"
-            asset inputs:file = @Environments/citrus_orchard_puresky_4k.exr@
-            string inputs:filtertype
-            string inputs:uaddressmode
-            string inputs:vaddressmode
+            uniform token info:id = "ND_RealityKitTexture2D_color3"
+            float inputs:bias.connect = None
+            color3f inputs:default
+            float inputs:dynamic_min_lod_clamp
+            asset inputs:file.connect = None
+            int inputs:max_anisotropy = 1
+            float inputs:max_lod_clamp
+            float inputs:min_lod_clamp
+            bool inputs:no_flip_v = 1
+            int2 inputs:offset
+            float2 inputs:texcoord
+            string inputs:u_wrap_mode
             color3f outputs:out
-            float2 ui:nodegraph:node:pos = (-166.95703, 28.957031)
-            int ui:nodegraph:node:stackingOrder = 8
+            float2 ui:nodegraph:node:pos = (-337.07178, 545.6145)
+            int ui:nodegraph:node:stackingOrder = 387
+        }
+
+        def Shader "Texcoord" (
+            references = None
+        )
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-1121.1005, 270.21783)
+            int ui:nodegraph:node:stackingOrder = 385
+        }
+
+        def Shader "Swizzle" (
+            references = None
+        )
+        {
+            uniform token info:id = "ND_swizzle_vector2_float"
+            string inputs:channels = "y"
+            float2 inputs:in.connect = </Root/SkySphere_mat/Texcoord.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-945.2426, 277.7051)
+            int ui:nodegraph:node:stackingOrder = 385
+        }
+
+        def Shader "Subtract" (
+            references = None
+        )
+        {
+            uniform token info:id = "ND_subtract_float"
+            float inputs:in1.connect = </Root/SkySphere_mat/Swizzle.outputs:out>
+            float inputs:in2 = 0.5
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-824.5545, 277.46103)
+            int ui:nodegraph:node:stackingOrder = 385
+        }
+
+        def Shader "Absval" (
+            references = None
+        )
+        {
+            uniform token info:id = "ND_absval_float"
+            float inputs:in.connect = </Root/SkySphere_mat/Subtract.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-659.7975, 275.21164)
+            int ui:nodegraph:node:stackingOrder = 385
+        }
+
+        def Shader "Ifgreater" (
+            references = None
+        )
+        {
+            uniform token info:id = "ND_ifgreater_color3"
+            color3f inputs:in1.connect = </Root/SkySphere_mat/RealityKitTexture2D_1.outputs:out>
+            color3f inputs:in2.connect = </Root/SkySphere_mat/RealityKitTexture2D.outputs:out>
+            float inputs:value1.connect = </Root/SkySphere_mat/Absval.outputs:out>
+            float inputs:value2 = 0.42
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-76.13111, 343.79642)
+            int ui:nodegraph:node:stackingOrder = 343
+        }
+
+        def Shader "RealityKitTexture2D_1" (
+            references = None
+        )
+        {
+            uniform token info:id = "ND_RealityKitTexture2D_color3"
+            float inputs:bias.connect = None
+            string inputs:border_color
+            color3f inputs:default
+            float inputs:dynamic_min_lod_clamp
+            asset inputs:file.connect = None
+            string inputs:mag_filter
+            int inputs:max_anisotropy = 3
+            float inputs:max_lod_clamp
+            string inputs:min_filter
+            float inputs:min_lod_clamp
+            string inputs:mip_filter
+            bool inputs:no_flip_v = 1
+            int2 inputs:offset
+            float2 inputs:texcoord
+            string inputs:u_wrap_mode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-338.33176, 75.41556)
+            int ui:nodegraph:node:stackingOrder = 268
+        }
+
+        over "Multiply"
+        {
+            float inputs:in2 = 0.002
+            int ui:nodegraph:node:stackingOrder = 670
         }
     }
 
     def "SkySphere" (
-        active = true
         customData = {
             float3 rotationEulerHint = (0, 1.7453289, 0)
         }
-        prepend references = @SkySphere.usdz@
+        references = @SkySphere.usdz@
     )
     {
         quatf xformOp:orient = (0.64278764, 0, 0.7660444, 0)
@@ -465,50 +582,50 @@ def Xform "Root"
             asset inputs:SkySphere_Texture (
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-754.4517, 71.84726)
+                        float2 positionInSubgraph = (912.5, 1348)
                         float2 sizeInSubgraph = (188.5, 53)
                         int stackingOrderInSubgraph = 390
                     }
                 }
             )
-            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (618.683, 228.22533)
-            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 477
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1736.5, 475.25)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 672
 
             over "RealityKitTexture2D_1"
             {
-                asset inputs:file = @Environments/citrus_orchard_puresky_4k.exr@
+                asset inputs:file = @Environments/overcast_soil_puresky_4k.exr@
                 delete asset inputs:file.connect = </Root/SkySphere/SkySphere_mat.inputs:SkySphere_Texture>
                 float2 inputs:texcoord.connect = </Root/SkySphere/SkySphere_mat/Add.outputs:out>
                 string inputs:u_wrap_mode = "repeat"
                 string inputs:v_wrap_mode = "repeat"
-                float2 ui:nodegraph:node:pos = (-155.75769, 45.229126)
-                int ui:nodegraph:node:stackingOrder = 553
+                float2 ui:nodegraph:node:pos = (1035.5, 1018.75)
+                int ui:nodegraph:node:stackingOrder = 666
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = []
             }
 
             over "RealityKitTexture2D"
             {
-                string inputs:border_color
-                asset inputs:file = @Environments/citrus_orchard_puresky_4k.exr@
+                string inputs:border_color = "transparent_black"
+                asset inputs:file = @Environments/overcast_soil_puresky_4k.exr@
                 delete asset inputs:file.connect = </Root/SkySphere/SkySphere_mat.inputs:SkySphere_Texture>
                 string inputs:mag_filter
                 string inputs:min_filter
                 float2 inputs:texcoord.connect = </Root/SkySphere/SkySphere_mat/Add.outputs:out>
                 string inputs:u_wrap_mode = "repeat"
                 string inputs:v_wrap_mode = "repeat"
-                float2 ui:nodegraph:node:pos = (-163.51028, 640.3602)
-                int ui:nodegraph:node:stackingOrder = 551
+                float2 ui:nodegraph:node:pos = (1035.5, 475.25)
+                int ui:nodegraph:node:stackingOrder = 643
             }
 
             over "UnlitSurface"
             {
-                float2 ui:nodegraph:node:pos = (294.56543, 353.85663)
-                int ui:nodegraph:node:stackingOrder = 481
+                float2 ui:nodegraph:node:pos = (1487, 475.25)
+                int ui:nodegraph:node:stackingOrder = 670
             }
 
             over "Ifgreater"
             {
-                float2 ui:nodegraph:node:pos = (51.54885, 342.2128)
+                float2 ui:nodegraph:node:pos = (1262, 475.25)
                 int ui:nodegraph:node:stackingOrder = 483
             }
 
@@ -516,29 +633,29 @@ def Xform "Root"
             {
                 uniform token info:id = "ND_time_float"
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (-1052.0825, 530.57776)
-                int ui:nodegraph:node:stackingOrder = 625
+                float2 ui:nodegraph:node:pos = (62.5, 798.5)
+                int ui:nodegraph:node:stackingOrder = 629
             }
 
             def Shader "Multiply"
             {
                 uniform token info:id = "ND_multiply_float"
                 float inputs:in1.connect = </Root/SkySphere/SkySphere_mat/Time.outputs:out>
-                float inputs:in2 = 0.003
+                float inputs:in2 = 0.005
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (-857.47314, 496.3473)
-                int ui:nodegraph:node:stackingOrder = 591
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2", "outputs:out"]
+                float2 ui:nodegraph:node:pos = (213.5, 798.5)
+                int ui:nodegraph:node:stackingOrder = 668
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2", "outputs:out", "outputs:out"]
             }
 
             def Shader "Combine2"
             {
                 uniform token info:id = "ND_combine2_vector2"
-                float inputs:in1.connect = </Root/SkySphere/SkySphere_mat/Multiply.outputs:out>
+                float inputs:in1.connect = </Root/SkySphere/SkySphere_mat/Multiply_1.outputs:out>
                 float inputs:in2
                 float2 outputs:out
-                float2 ui:nodegraph:node:pos = (-653.2661, 423.5387)
-                int ui:nodegraph:node:stackingOrder = 443
+                float2 ui:nodegraph:node:pos = (650, 798.5)
+                int ui:nodegraph:node:stackingOrder = 648
             }
 
             def Shader "Add"
@@ -547,7 +664,7 @@ def Xform "Root"
                 float2 inputs:in1.connect = </Root/SkySphere/SkySphere_mat/TextureCoordinates.outputs:out>
                 float2 inputs:in2.connect = </Root/SkySphere/SkySphere_mat/Combine2.outputs:out>
                 float2 outputs:out
-                float2 ui:nodegraph:node:pos = (-360.60593, 446.4098)
+                float2 ui:nodegraph:node:pos = (843.5, 642.875)
                 int ui:nodegraph:node:stackingOrder = 457
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in1"]
             }
@@ -556,9 +673,154 @@ def Xform "Root"
             {
                 uniform token info:id = "ND_texcoord_vector2"
                 float2 outputs:out
-                float2 ui:nodegraph:node:pos = (-583.92236, 589.5465)
+                float2 ui:nodegraph:node:pos = (650, 487.25)
                 int ui:nodegraph:node:stackingOrder = 507
             }
+
+            def Shader "Multiply_1"
+            {
+                uniform token info:id = "ND_multiply_float"
+                float inputs:in1.connect = </Root/SkySphere/SkySphere_mat/Multiply.outputs:out>
+                float inputs:in2 = 0.8
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (394, 798.5)
+                int ui:nodegraph:node:stackingOrder = 665
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2", "outputs:out", "outputs:out"]
+            }
+
+            over "Absval"
+            {
+                float2 ui:nodegraph:node:pos = (1035.5, 27.5)
+            }
+
+            over "Subtract"
+            {
+                float2 ui:nodegraph:node:pos = (843.5, 27.5)
+            }
+
+            over "Texcoord"
+            {
+                float2 ui:nodegraph:node:pos = (394, 27.5)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:pos = (650, 27.5)
+            }
+        }
+    }
+
+    def Material "Material"
+    {
+        prepend token outputs:mtlx:surface.connect = </Root/Material/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.25, 100.5)
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor = (0.97507876, 1, 0.9922972) (
+                colorSpace = "srgb_texture"
+            )
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:opacity.connect = </Root/Material/WorleyNoise3D.outputs:out>
+            float inputs:roughness
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (40.226562, 141.90625)
+            int ui:nodegraph:node:stackingOrder = 112
+        }
+
+        def Shader "WorleyNoise3D"
+        {
+            uniform token info:id = "ND_worleynoise3d_float"
+            float inputs:jitter
+            float3 inputs:position.connect = </Root/Material/Add.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-268.3203, 80.71875)
+            int ui:nodegraph:node:stackingOrder = 101
+        }
+
+        def Shader "Position"
+        {
+            uniform token info:id = "ND_position_vector3"
+            string inputs:space = "world"
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-804.85156, -65.8125)
+            int ui:nodegraph:node:stackingOrder = 105
+        }
+
+        def Shader "Time"
+        {
+            uniform token info:id = "ND_time_float"
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-745.83203, 201.92578)
+            int ui:nodegraph:node:stackingOrder = 119
+        }
+
+        def Shader "ConstantFloat"
+        {
+            uniform token info:id = "ND_constant_float"
+            float inputs:value = 0.01
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-749.3164, 74.56641)
+            int ui:nodegraph:node:stackingOrder = 114
+        }
+
+        def Shader "Multiply_1"
+        {
+            uniform token info:id = "ND_multiply_vector3FA"
+            prepend float3 inputs:in1.connect = </Root/Material/Position.outputs:out>
+            float inputs:in2.connect = </Root/Material/ConstantFloat.outputs:out>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-546.02734, -23.246094)
+            int ui:nodegraph:node:stackingOrder = 102
+        }
+
+        def Shader "Add"
+        {
+            uniform token info:id = "ND_add_vector3FA"
+            prepend float3 inputs:in1.connect = </Root/Material/Multiply_1.outputs:out>
+            float inputs:in2.connect = </Root/Material/Time.outputs:out>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-490.40234, 70.47656)
+            int ui:nodegraph:node:stackingOrder = 100
+        }
+    }
+
+    def "SkyDome" (
+        active = false
+        references = @SkyDome.usdz@
+    )
+    {
+        float3 xformOp:scale = (20, 20, 20)
+        float3 xformOp:translate = (0, -2143.794, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Dome_01" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/SkySphere_mat> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            float3 xformOp:scale = (1, 1, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        over "Ground_01" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/Material> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+        }
+
+        over "Grid" (
+            active = false
+        )
+        {
         }
     }
 }

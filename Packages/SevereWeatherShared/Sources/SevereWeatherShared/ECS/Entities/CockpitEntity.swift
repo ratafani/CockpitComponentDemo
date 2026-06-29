@@ -70,9 +70,13 @@ public class CockpitEntity: Entity {
         if let throttleL = immersiveCockpit.findEntity(named: NodeName.throttleLeft.rawValue) {
             cockpitComponent.throttleEntity = throttleL
             cockpitComponent.initialThrottleTransform = throttleL.transform
+            // Set visually to 1.0 position (OVERSPEED)
+            throttleL.transform.rotation = throttleL.transform.rotation * simd_quatf(angle: -Float.pi/4, axis: [1, 0, 0])
         } else if let throttleR = immersiveCockpit.findEntity(named: NodeName.throttleRight.rawValue) {
             cockpitComponent.throttleEntity = throttleR
             cockpitComponent.initialThrottleTransform = throttleR.transform
+            // Set visually to 1.0 position (OVERSPEED)
+            throttleR.transform.rotation = throttleR.transform.rotation * simd_quatf(angle: -Float.pi/4, axis: [1, 0, 0])
         } else {
             logger.error("❌ Failed to find Throttle entity with names: \(NodeName.throttleLeft.rawValue) or \(NodeName.throttleRight.rawValue)")
         }

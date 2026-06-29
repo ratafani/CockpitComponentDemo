@@ -1,11 +1,52 @@
 {
+  "02788A2F-C4DB-43C1-A74C-8B001F140070" : {
+    "objectMetadataList" : [
+      [
+        "02788A2F-C4DB-43C1-A74C-8B001F140070",
+        "root",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "02788A2F-C4DB-43C1-A74C-8B001F140070",
+        "root",
+        "Cloud_Polygon_Blender_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "02788A2F-C4DB-43C1-A74C-8B001F140070",
+        "root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "02788A2F-C4DB-43C1-A74C-8B001F140070",
+        "root",
+        "_materials",
+        "Cloud"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "057DFC64-A90F-4C4E-AF94-E498458743D2" : {
     "objectMetadataList" : [
       [
         "057DFC64-A90F-4C4E-AF94-E498458743D2",
         "Root",
         "Cockpit4",
-        "SC_SideStickL_Rig_V01"
+        "SC_SideStickL_Rig_V01",
+        "Armature_002"
       ],
       {
         "isExpanded" : true,
@@ -24,29 +65,10 @@
       },
       [
         "057DFC64-A90F-4C4E-AF94-E498458743D2",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "057DFC64-A90F-4C4E-AF94-E498458743D2",
         "Root",
         "Cockpit4",
         "Sidestick",
         "_materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "057DFC64-A90F-4C4E-AF94-E498458743D2",
-        "Root",
-        "Cockpit4",
-        "SC_SideStickL_Rig_V01",
-        "Armature_004"
       ],
       {
         "isExpanded" : true,
@@ -67,7 +89,25 @@
         "Root",
         "Cockpit4",
         "SC_SideStickL_Rig_V01",
-        "Armature_002"
+        "Armature_004"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4",
+        "SC_SideStickL_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -122,10 +162,10 @@
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
-        "SkySphere"
+        "SkySphere",
+        "SkySphere_mat"
       ],
       {
-        "disallowsFraming" : true,
         "isExpanded" : true,
         "isLocked" : false
       },
@@ -136,12 +176,51 @@
       ],
       {
         "disallowsFraming" : true,
-        "isExpanded" : false,
+        "isExpanded" : true,
         "isLocked" : false
       },
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "Cloud",
+        "Cloud_Polygon_Blender_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SkySphere_mat"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SkySphere"
+      ],
+      {
+        "disallowsFraming" : true,
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "Cloud",
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -161,17 +240,7 @@
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
-        "SkyMaterial"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
-        "Root",
-        "SkySphere",
-        "SkySphere_mat"
+        "Material"
       ],
       {
         "isExpanded" : true,
@@ -236,12 +305,11 @@
     "objectMetadataList" : [
       [
         "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
-        "Root",
-        "Video_Dock"
+        "Root"
       ],
       {
         "disallowsFraming" : false,
-        "isExpanded" : false,
+        "isExpanded" : true,
         "isLocked" : false
       },
       [
@@ -256,11 +324,12 @@
       },
       [
         "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
-        "Root"
+        "Root",
+        "Video_Dock"
       ],
       {
         "disallowsFraming" : false,
-        "isExpanded" : true,
+        "isExpanded" : false,
         "isLocked" : false
       }
     ]

@@ -20,7 +20,7 @@ public struct CockpitComponent: Component {
     public var initialThrottleTransform: Transform?
     
     /// Current values for simulation
-    public var throttleValue: Float = 0.0 // 0 to 1
+    public var throttleValue: Float = 1.0 // Start at 1.0 (OVERSPEED) for the crisis simulation
     public var sidestickPitch: Float = 0.0
     public var sidestickRoll: Float = 0.0
     public var normalizedDisplacement: SIMD2<Float> = .zero
