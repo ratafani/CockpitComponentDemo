@@ -19,7 +19,7 @@ def Xform "Root"
         references = @TechArt/Mesh/Cockpit4.usdc@
     )
     {
-        reorder nameChildren = ["scene", "_materials", "CP_ENG1_Switch_Rig_V01", "CP_ENG2_Switch_Rig_V01_001", "Cube_002", "CP_FireFaultR_Button_Rig_V01", "CP_ThrottleR_Lever_Rig_V01", "CP_FireFaultL_Button_Rig_V01", "CP_EngineMode_Rotate_Rig_V01", "CP_ThrottleL_Lever_Rig_V01", "env_light", "Sidestick"]
+        reorder nameChildren = ["Sidestick", "scene", "_materials", "env_light", "Throttle", "Mat_1", "Mat_2", "Mat_3", "Mat_4"]
         quatf xformOp:orient = (1.3767878e-7, -1.3767874e-7, 0.7071069, 0.70710665)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 0)
@@ -406,10 +406,48 @@ def Xform "Root"
                 }
             }
         }
+
+        def "Sidestick" (
+            active = true
+            references = @TechArt/Mesh/Sidestick.usdc@
+        )
+        {
+            quatf xformOp:orient = (0.99999994, -1.5879951e-7, 1.876796e-14, 1.9470716e-7)
+            float3 xformOp:scale = (0.99999994, 0.99999994, 0.99999994)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "_materials"
+            {
+                over "Bawah" (
+                    references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_1>
+                )
+                {
+                }
+
+                over "Atas" (
+                    references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_3>
+                )
+                {
+                }
+
+                over "Merah" (
+                    references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_4>
+                )
+                {
+                }
+
+                over "Abu" (
+                    references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_2>
+                )
+                {
+                }
+            }
+        }
     }
 
     def "Sidestick2" (
-        active = true
+        active = false
         references = @TechArt/Mesh/Sidestick2.usdc@
     )
     {
@@ -417,6 +455,41 @@ def Xform "Root"
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "_materials"
+        {
+            over "Bawah" (
+                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_1>
+            )
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "Atas" (
+                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_2>
+            )
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "Merah" (
+                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_4>
+            )
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "Abu" (
+                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_3>
+            )
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
     }
 
     def Material "SkySphere_mat" (
