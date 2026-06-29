@@ -1,0 +1,343 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (494.60.2)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Fog", "Cone", "Cone_1"]
+    def Cone "Cone" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Fog_1> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        float3 xformOp:scale = (100, 100, 100)
+        float3 xformOp:translate = (-69.83988, 0.100000024, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Material "Fog"
+    {
+        float inputs:A = 0.01 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-807.238, 344.13208)
+                    int stackingOrderInSubgraph = 321
+                }
+            }
+        )
+        float inputs:B = 100 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-715.0649, 416.7475)
+                    int stackingOrderInSubgraph = 322
+                }
+            }
+        )
+        color3f inputs:Color = (0.9489453, 0.1767911, 0.15791047) (
+            colorSpace = "srgb_displayp3"
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-352.43277, 61.82133)
+                    int stackingOrderInSubgraph = 329
+                }
+            }
+        )
+        color3f inputs:Shadow = (0.9258203, 0.9258203, 0.9258203) (
+            colorSpace = "srgb_displayp3"
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-346.54565, -37.02897)
+                    int stackingOrderInSubgraph = 327
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/Fog/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (364.22464, 302.75323)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 136
+
+        def Shader "Mix"
+        {
+            uniform token info:id = "ND_mix_color3"
+            color3f inputs:bg.connect = </Root/Fog.inputs:Color>
+            color3f inputs:fg.connect = </Root/Fog.inputs:Shadow>
+            float inputs:mix.connect = </Root/Fog/Clamp.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-77.42969, 70.72266)
+            int ui:nodegraph:node:stackingOrder = 149
+        }
+
+        def Shader "Position"
+        {
+            uniform token info:id = "ND_position_vector3"
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-953.23663, 151.27048)
+            int ui:nodegraph:node:stackingOrder = 316
+        }
+
+        def Shader "CameraPosition"
+        {
+            uniform token info:id = "ND_realitykit_cameraposition_vector3"
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-995.7635, 228.88846)
+            int ui:nodegraph:node:stackingOrder = 316
+        }
+
+        def Shader "MTLDistance"
+        {
+            uniform token info:id = "ND_MTL_distance_vector3_float"
+            float3 inputs:x.connect = </Root/Fog/Position.outputs:out>
+            float3 inputs:y.connect = </Root/Fog/CameraPosition.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-768.42084, 205.06125)
+            int ui:nodegraph:node:stackingOrder = 316
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/Fog/MTLDistance.outputs:out>
+            float inputs:in2.connect = </Root/Fog.inputs:A>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-639.52545, 296.9999)
+            int ui:nodegraph:node:stackingOrder = 316
+        }
+
+        def Shader "Power"
+        {
+            uniform token info:id = "ND_power_float"
+            float inputs:in1.connect = </Root/Fog/Multiply.outputs:out>
+            float inputs:in2.connect = </Root/Fog.inputs:B>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-432.31046, 315.74344)
+            int ui:nodegraph:node:stackingOrder = 316
+        }
+
+        def Shader "Clamp"
+        {
+            uniform token info:id = "ND_clamp_float"
+            float inputs:high
+            float inputs:in.connect = </Root/Fog/Power.outputs:out>
+            float inputs:low
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-258.31094, 230.73822)
+            int ui:nodegraph:node:stackingOrder = 316
+        }
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap = 0
+            color3f inputs:color.connect = </Root/Fog/Mix.outputs:out>
+            bool inputs:hasPremultipliedAlpha
+            float inputs:opacity
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (135.61328, 191.90625)
+            int ui:nodegraph:node:stackingOrder = 319
+        }
+    }
+
+    def Cone "Cone_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        references = @TestingFog.usda@</Root/Fog>
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Fog> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        float2 ui:nodegraph:node:pos = (-359.6931, 219.5216)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 100)
+        float3 xformOp:translate = (79.79213, 0.100000024, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cone "Cone_2" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Fog> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        float2 ui:nodegraph:node:pos = (-359.6931, 219.5216)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 100)
+        float3 xformOp:translate = (-69.83988, 0.100000024, 40.476173)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cone "Cone_3" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        references = @TestingFog.usda@</Root/Fog>
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Fog> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        token outputs:mtlx:surface.connect = </Root/Cone_3/UnlitSurface.outputs:out>
+        double radius = 0.1
+        float2 ui:nodegraph:node:pos = (-339.6931, 239.5216)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 100)
+        float3 xformOp:translate = (79.79213, 0.100000024, 40.476173)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cone "Cone_4" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Fog> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        float2 ui:nodegraph:node:pos = (-339.6931, 239.5216)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 100)
+        float3 xformOp:translate = (-69.83988, 0.099999905, 81.05613)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cone "Cone_5" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        references = @TestingFog.usda@</Root/Fog>
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Fog> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        token outputs:mtlx:surface.connect = </Root/Cone_5/UnlitSurface.outputs:out>
+        double radius = 0.1
+        float2 ui:nodegraph:node:pos = (-319.6931, 259.5216)
+        int ui:nodegraph:node:stackingOrder = 3
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 100)
+        float3 xformOp:translate = (79.79213, 0.099999905, 81.05613)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Material "Fog_1"
+    {
+        color3f inputs:Color = (0.08192866, 0.41134766, 0) (
+            colorSpace = "srgb_displayp3"
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-372.85684, -48.602478)
+                    int stackingOrderInSubgraph = 322
+                }
+            }
+        )
+        color3f inputs:Shadow = (0, 0.027286401, 0.29564452) (
+            colorSpace = "srgb_displayp3"
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-370.67618, 51.164307)
+                    int stackingOrderInSubgraph = 314
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/Fog_1/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:node:pos = (-551.31006, 327.3761)
+        int ui:nodegraph:node:stackingOrder = 1
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (410.3259, 89.402794)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 306
+
+        def Shader "Mix"
+        {
+            uniform token info:id = "ND_mix_color3"
+            color3f inputs:bg.connect = </Root/Fog_1.inputs:Shadow>
+            color3f inputs:fg.connect = </Root/Fog_1.inputs:Color>
+            float inputs:mix.connect = </Root/Fog_1/Multiply.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-139.17969, 77.49219)
+            int ui:nodegraph:node:stackingOrder = 312
+        }
+
+        def Shader "HoverState"
+        {
+            uniform token info:id = "ND_realitykit_hover_state"
+            float outputs:intensity
+            bool outputs:isActive
+            float3 outputs:position
+            float outputs:timeSinceHoverStart
+            float2 ui:nodegraph:node:pos = (-882.2773, 226.72871)
+            int ui:nodegraph:node:stackingOrder = 320
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:timeSinceHoverStart"]
+        }
+
+        def Shader "Sin"
+        {
+            uniform token info:id = "ND_sin_float"
+            float inputs:in.connect = </Root/Fog_1/HoverState.outputs:timeSinceHoverStart>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-699.3789, 264.4375)
+            int ui:nodegraph:node:stackingOrder = 318
+        }
+
+        def Shader "Abs"
+        {
+            uniform token info:id = "ND_absval_float"
+            float inputs:in.connect = </Root/Fog_1/Sin.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-479.59375, 292.9297)
+            int ui:nodegraph:node:stackingOrder = 315
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/Fog_1/HoverState.outputs:intensity>
+            float inputs:in2.connect = </Root/Fog_1/Abs.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-293.07812, 184.4414)
+            int ui:nodegraph:node:stackingOrder = 310
+        }
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor.connect = </Root/Fog_1/Mix.outputs:out>
+            float3 inputs:normal
+            float inputs:opacity
+            float inputs:roughness = 1
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (141.46985, 133.52466)
+            int ui:nodegraph:node:stackingOrder = 308
+        }
+    }
+}
+

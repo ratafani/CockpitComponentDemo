@@ -4,7 +4,8 @@
       [
         "02788A2F-C4DB-43C1-A74C-8B001F140070",
         "root",
-        "_materials"
+        "_materials",
+        "Cloud"
       ],
       {
         "isExpanded" : true,
@@ -21,7 +22,8 @@
       },
       [
         "02788A2F-C4DB-43C1-A74C-8B001F140070",
-        "root"
+        "root",
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -29,9 +31,7 @@
       },
       [
         "02788A2F-C4DB-43C1-A74C-8B001F140070",
-        "root",
-        "_materials",
-        "Cloud"
+        "root"
       ],
       {
         "isExpanded" : true,
@@ -46,7 +46,17 @@
         "Root",
         "Cockpit4",
         "SC_SideStickL_Rig_V01",
-        "Armature_002"
+        "Armature_004"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root",
+        "Cockpit4",
+        "SC_SideStickL_Rig_V01"
       ],
       {
         "isExpanded" : true,
@@ -76,6 +86,14 @@
       },
       [
         "057DFC64-A90F-4C4E-AF94-E498458743D2",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "057DFC64-A90F-4C4E-AF94-E498458743D2",
         "Root",
         "Cockpit3",
         "_materials"
@@ -89,25 +107,7 @@
         "Root",
         "Cockpit4",
         "SC_SideStickL_Rig_V01",
-        "Armature_004"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "057DFC64-A90F-4C4E-AF94-E498458743D2",
-        "Root",
-        "Cockpit4",
-        "SC_SideStickL_Rig_V01"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "057DFC64-A90F-4C4E-AF94-E498458743D2",
-        "Root"
+        "Armature_002"
       ],
       {
         "isExpanded" : true,
@@ -119,7 +119,8 @@
     "objectMetadataList" : [
       [
         "0701B343-C7AA-401B-B68A-76C3DAF412CD",
-        "Root"
+        "Root",
+        "Cockpit_Material"
       ],
       {
         "isExpanded" : true,
@@ -127,8 +128,7 @@
       },
       [
         "0701B343-C7AA-401B-B68A-76C3DAF412CD",
-        "Root",
-        "Cockpit_Material"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -145,15 +145,6 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "0F51D2B6-8429-42F2-986A-AB3D854A6C9D",
-        "root",
-        "Throttle"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
@@ -162,7 +153,15 @@
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
-        "SkySphere",
+        "Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
         "SkySphere_mat"
       ],
       {
@@ -172,38 +171,12 @@
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
-        "SkyDome"
+        "SkyDome",
+        "Ground_01"
       ],
       {
         "disallowsFraming" : true,
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
-        "Root",
-        "Cloud",
-        "Cloud_Polygon_Blender_1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
-        "Root",
-        "SkySphere_mat"
-      ],
-      {
-        "isExpanded" : true,
+        "isExpanded" : false,
         "isLocked" : false
       },
       [
@@ -228,19 +201,37 @@
       },
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
-        "Root",
-        "SkyDome",
-        "Ground_01"
+        "Root"
       ],
       {
-        "disallowsFraming" : true,
-        "isExpanded" : false,
+        "isExpanded" : true,
         "isLocked" : false
       },
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
-        "Material"
+        "SkySphere",
+        "SkySphere_mat"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SkyDome"
+      ],
+      {
+        "disallowsFraming" : true,
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "Cloud",
+        "Cloud_Polygon_Blender_1"
       ],
       {
         "isExpanded" : true,
@@ -301,17 +292,29 @@
       }
     ]
   },
-  "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD" : {
+  "B65644C9-1DBB-4C56-BF1C-3E8AD2B77DBF" : {
     "objectMetadataList" : [
       [
-        "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
-        "Root"
+        "B65644C9-1DBB-4C56-BF1C-3E8AD2B77DBF",
+        "Root",
+        "Fog"
       ],
       {
-        "disallowsFraming" : false,
         "isExpanded" : true,
         "isLocked" : false
       },
+      [
+        "B65644C9-1DBB-4C56-BF1C-3E8AD2B77DBF",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD" : {
+    "objectMetadataList" : [
       [
         "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
         "Root",
@@ -330,6 +333,15 @@
       {
         "disallowsFraming" : false,
         "isExpanded" : false,
+        "isLocked" : false
+      },
+      [
+        "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
+        "Root"
+      ],
+      {
+        "disallowsFraming" : false,
+        "isExpanded" : true,
         "isLocked" : false
       }
     ]
