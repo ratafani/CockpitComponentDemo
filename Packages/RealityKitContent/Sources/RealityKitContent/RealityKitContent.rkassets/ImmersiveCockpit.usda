@@ -914,7 +914,7 @@ def Xform "Root"
     }
 
     def "SC_Sidestick_controller_L_2" (
-        active = true
+        active = false
         prepend references = @TechArt/Mesh/SC_Sidestick_controller_L 2.usdc@
     )
     {
@@ -926,11 +926,93 @@ def Xform "Root"
         over "_materials"
         {
             over "SC_SideStick_Black" (
-                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_3>
+                references = @TechArt/Shaders/PBR_Material.usda@</Root/Material>
             )
             {
+                float inputs:A = 2 (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-1272.7858, 401.44165)
+                            int stackingOrderInSubgraph = 118
+                        }
+                    }
+                )
+                float inputs:Brightness = 0
+                color3f inputs:ConstantColor3 (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-591.33026, -37.62416)
+                            int stackingOrderInSubgraph = 121
+                        }
+                    }
+                )
+                color3f inputs:ConstantColor3_1 (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-623.38605, 54.348415)
+                            int stackingOrderInSubgraph = 124
+                        }
+                    }
+                )
+                float inputs:State = 0
+                float inputs:TotalPulse = 1
                 token outputs:mtlx:surface
                 token outputs:realitykit:vertex
+
+                over "UsdPreviewSurface"
+                {
+                    color3f inputs:diffuseColor = (0.18532874, 0.1918835, 0.18845555) (
+                        colorSpace = "srgb_displayp3"
+                    )
+                }
+
+                over "ConstantFloat" (
+                    active = false
+                )
+                {
+                    float inputs:value = 2
+                    float2 ui:nodegraph:node:pos = (-1272.7858, 401.44165)
+                    int ui:nodegraph:node:stackingOrder = 127
+                }
+
+                over "Multiply_1" (
+                    active = false
+                )
+                {
+                    delete float inputs:in2.connect = </Root/SC_Sidestick_controller_L_2/_materials/SC_SideStick_Black/ConstantFloat.outputs:out>
+                    float2 ui:nodegraph:node:pos = (-865.08, 376.20633)
+                    int ui:nodegraph:node:stackingOrder = 123
+                }
+
+                def Shader "Multiply_3"
+                {
+                    uniform token info:id = "ND_multiply_float"
+                    float inputs:in1.connect = </Root/SC_Sidestick_controller_L_2/_materials/SC_SideStick_Black/Time.outputs:out>
+                    float inputs:in2.connect = </Root/SC_Sidestick_controller_L_2/_materials/SC_SideStick_Black.inputs:A>
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-1093.7217, 354.03134)
+                    int ui:nodegraph:node:stackingOrder = 117
+                }
+
+                over "Sin"
+                {
+                    float inputs:in.connect = </Root/SC_Sidestick_controller_L_2/_materials/SC_SideStick_Black/Multiply_3.outputs:out>
+                }
+
+                over "Add"
+                {
+                    float inputs:in1.connect = </Root/SC_Sidestick_controller_L_2/_materials/SC_SideStick_Black/Sin.outputs:out>
+                }
+
+                over "PreviewSurface"
+                {
+                    float inputs:clearcoatRoughness
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:occlusion
+                    int ui:nodegraph:node:stackingOrder = 125
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
             }
 
             over "SC_SideStick_blue" (
@@ -956,6 +1038,44 @@ def Xform "Root"
             {
                 float3 xformOp:translate = (0, 0, 0)
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def "SideStick" (
+        active = true
+        prepend references = @SideStick.usda@
+    )
+    {
+        float3 xformOp:scale = (0.4, 0.4, 0.4)
+        float3 xformOp:translate = (0.94286, -1.634941, 1.587149)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "SC_Sidestick_controller_L_3"
+        {
+            over "_materials"
+            {
+                over "SC_SideStick_Black" (
+                    references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_3>
+                )
+                {
+                    token outputs:mtlx:surface
+                    token outputs:realitykit:vertex
+                }
+
+                over "SC_SideStick_Red"
+                {
+                    token outputs:mtlx:surface
+                    token outputs:realitykit:vertex
+                }
+
+                over "SC_SideStick_blue" (
+                    references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_1>
+                )
+                {
+                    token outputs:mtlx:surface
+                    token outputs:realitykit:vertex
+                }
             }
         }
     }

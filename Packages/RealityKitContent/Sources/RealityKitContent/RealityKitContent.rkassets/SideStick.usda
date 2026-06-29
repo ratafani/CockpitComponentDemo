@@ -1,0 +1,24 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (494.100.6)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def "SC_Sidestick_controller_L_3" (
+        active = true
+        prepend references = @TechArt/Mesh/SC_Sidestick_controller_L 3.usdc@
+    )
+    {
+        quatf xformOp:orient = (4.3297803e-17, 4.3297803e-17, 0.70710677, 0.70710677)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

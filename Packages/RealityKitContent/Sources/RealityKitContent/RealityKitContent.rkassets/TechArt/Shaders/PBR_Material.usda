@@ -447,5 +447,157 @@ def Xform "Root"
             int ui:nodegraph:node:stackingOrder = 62
         }
     }
+
+    def Material "Material"
+    {
+        float inputs:Brightness = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-729.6369, 725.2546)
+                    int stackingOrderInSubgraph = 111
+                }
+            }
+        )
+        color3f inputs:ConstantColor3 = (0.9489453, 0.1767911, 0.15791047) (
+            colorSpace = "srgb_displayp3"
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-518.6953, 59.078125)
+                }
+            }
+        )
+        color3f inputs:ConstantColor3_1 = (0.3959961, 0.83154297, 0.43139648) (
+            colorSpace = "srgb_displayp3"
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-685.0069, 155.05798)
+                    int stackingOrderInSubgraph = 4
+                }
+            }
+        )
+        float inputs:State = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-449.7673, 287.50665)
+                }
+            }
+        )
+        float inputs:TotalPulse = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-839.78015, 621.80756)
+                }
+            }
+        )
+        prepend token outputs:mtlx:surface.connect = </Root/Material/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.25, 100.5)
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor.connect = </Root/Material/Mix.outputs:out>
+            float inputs:roughness
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (93.5, 100.5)
+        }
+
+        def Shader "Mix"
+        {
+            uniform token info:id = "ND_mix_color3"
+            color3f inputs:bg.connect = </Root/Material/Multiply.outputs:out>
+            color3f inputs:fg.connect = </Root/Material.inputs:ConstantColor3>
+            float inputs:mix.connect = </Root/Material.inputs:State>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-270.5039, 65.76172)
+            int ui:nodegraph:node:stackingOrder = 1
+        }
+
+        def Shader "Time"
+        {
+            uniform token info:id = "ND_time_float"
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-1183.4921, 220.33357)
+            int ui:nodegraph:node:stackingOrder = 99
+        }
+
+        def Shader "Sin"
+        {
+            uniform token info:id = "ND_sin_float"
+            float inputs:in.connect = </Root/Material/Time.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-968.3642, 347.932)
+            int ui:nodegraph:node:stackingOrder = 96
+        }
+
+        def Shader "Multiply_1"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/Material/Sin.outputs:out>
+            float inputs:in2.connect = </Root/Material/ConstantFloat.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-853.73096, 406.7475)
+            int ui:nodegraph:node:stackingOrder = 96
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2"]
+        }
+
+        def Shader "Add"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/Material/Multiply_1.outputs:out>
+            float inputs:in2.connect = </Root/Material/ConstantFloat_1.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-765.2536, 407.5013)
+            int ui:nodegraph:node:stackingOrder = 96
+        }
+
+        def Shader "Multiply_2"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/Material/Add.outputs:out>
+            float inputs:in2.connect = </Root/Material.inputs:TotalPulse>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-641.3182, 410.7416)
+            int ui:nodegraph:node:stackingOrder = 96
+        }
+
+        def Shader "Add_1"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/Material/Multiply_2.outputs:out>
+            float inputs:in2.connect = </Root/Material.inputs:Brightness>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-558.4304, 370.94708)
+            int ui:nodegraph:node:stackingOrder = 96
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_color3FA"
+            prepend color3f inputs:in1.connect = </Root/Material.inputs:ConstantColor3_1>
+            float inputs:in2.connect = </Root/Material/Add_1.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-535.01904, 204.75595)
+            int ui:nodegraph:node:stackingOrder = 7
+        }
+
+        def Shader "ConstantFloat"
+        {
+            uniform token info:id = "ND_constant_float"
+            float inputs:value = 0.5
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-1033.6248, 399.30417)
+            int ui:nodegraph:node:stackingOrder = 106
+        }
+
+        def Shader "ConstantFloat_1"
+        {
+            uniform token info:id = "ND_constant_float"
+            float inputs:value = 0.5
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-967.12164, 504.96964)
+            int ui:nodegraph:node:stackingOrder = 108
+        }
+    }
 }
 

@@ -128,6 +128,15 @@
       [
         "0701B343-C7AA-401B-B68A-76C3DAF412CD",
         "Root",
+        "Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0701B343-C7AA-401B-B68A-76C3DAF412CD",
+        "Root",
         "Cockpit_Material"
       ],
       {
@@ -152,24 +161,18 @@
     "objectMetadataList" : [
       [
         "45F19B16-36D0-4D27-9197-6D4816859F05",
-        "root",
-        "SC_SideStickL_Rig_V01",
-        "SC_SideStickL_V01"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "45F19B16-36D0-4D27-9197-6D4816859F05",
         "root"
       ],
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
+      }
+    ]
+  },
+  "53A66839-0785-4C42-A205-1F1C26CBE2F2" : {
+    "objectMetadataList" : [
       [
-        "45F19B16-36D0-4D27-9197-6D4816859F05",
+        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
         "root",
         "SC_SideStickL_Rig_V01"
       ],
@@ -178,10 +181,18 @@
         "isLocked" : false
       },
       [
-        "45F19B16-36D0-4D27-9197-6D4816859F05",
+        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
         "root",
         "SC_SideStickL_Rig_V01",
         "SC_SideStickL_Button_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
+        "root"
       ],
       {
         "isExpanded" : true,
@@ -224,7 +235,22 @@
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
-        "Cockpit4"
+        "SideStick",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SideStick",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01",
+        "SC_SideStickL_Button_Rig_V01",
+        "SC_SideStickL_Button_V01"
       ],
       {
         "isExpanded" : true,
@@ -241,7 +267,39 @@
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
+        "SC_Sidestick_controller_L_2",
+        "_materials",
+        "SC_SideStick_Black"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SideStick",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01",
+        "SC_SideStickL_Button_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
         "Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SideStick"
       ],
       {
         "isExpanded" : true,
@@ -269,10 +327,43 @@
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
+        "SideStick",
+        "SC_Sidestick_controller_L_3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SideStick",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01",
+        "SC_SideStickL_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
         "SkyDome"
       ],
       {
         "disallowsFraming" : true,
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "SideStick",
+        "SC_Sidestick_controller_L_3",
+        "_materials"
+      ],
+      {
         "isExpanded" : true,
         "isLocked" : false
       },
@@ -285,6 +376,71 @@
       {
         "disallowsFraming" : true,
         "isExpanded" : false,
+        "isLocked" : false
+      }
+    ]
+  },
+  "762D609A-FF75-4759-8B3F-96FA50635BF1" : {
+    "objectMetadataList" : [
+      [
+        "762D609A-FF75-4759-8B3F-96FA50635BF1",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "762D609A-FF75-4759-8B3F-96FA50635BF1",
+        "Root",
+        "SC_Sidestick_controller_L_3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "762D609A-FF75-4759-8B3F-96FA50635BF1",
+        "Root",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01",
+        "SC_SideStickL_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "762D609A-FF75-4759-8B3F-96FA50635BF1",
+        "Root",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "762D609A-FF75-4759-8B3F-96FA50635BF1",
+        "Root",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01",
+        "SC_SideStickL_Button_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "762D609A-FF75-4759-8B3F-96FA50635BF1",
+        "Root",
+        "SC_Sidestick_controller_L_3",
+        "SC_SideStickL_Rig_V01",
+        "SC_SideStickL_V01",
+        "Cube"
+      ],
+      {
+        "isExpanded" : true,
         "isLocked" : false
       }
     ]
