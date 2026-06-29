@@ -408,7 +408,7 @@ def Xform "Root"
         }
 
         def "Sidestick" (
-            active = true
+            active = false
             references = @TechArt/Mesh/Sidestick.usdc@
         )
         {
@@ -910,6 +910,53 @@ def Xform "Root"
             active = false
         )
         {
+        }
+    }
+
+    def "SC_Sidestick_controller_L_2" (
+        active = true
+        prepend references = @TechArt/Mesh/SC_Sidestick_controller_L 2.usdc@
+    )
+    {
+        quatf xformOp:orient = (4.3297803e-17, 4.3297803e-17, 0.70710677, 0.70710677)
+        float3 xformOp:scale = (0.4, 0.4, 0.4)
+        float3 xformOp:translate = (0.94286215, -1.700498, 1.63667)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "_materials"
+        {
+            over "SC_SideStick_Black" (
+                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_3>
+            )
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "SC_SideStick_blue" (
+                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_1>
+            )
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "SC_SideStick_Red" (
+                references = @TechArt/Mesh/Cockpit4.usdc@</root/Mat_4>
+            )
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+
+        over "SC_SideStickL_Rig_V01"
+        {
+            over "Armature_002"
+            {
+                float3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
         }
     }
 }
