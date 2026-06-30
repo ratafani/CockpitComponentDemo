@@ -7,12 +7,14 @@
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Cloud.usdc" : "02788A2F-C4DB-43C1-A74C-8B001F140070",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Immersive.usda" : "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/ImmersiveCockpit.usda" : "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+    "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/SideStick.usda" : "EB8C3891-42A6-4A86-87ED-EC33BAC384D4",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Cockpit4.usdc" : "0F51D2B6-8429-42F2-986A-AB3D854A6C9D",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/SC_Sidestick_controller_L 2.usdc" : "45F19B16-36D0-4D27-9197-6D4816859F05",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/SC_Sidestick_controller_L 3.usdc" : "53A66839-0785-4C42-A205-1F1C26CBE2F2",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Sidestick.usdc" : "A2E2F63F-41AE-49A1-A9A3-EF6672972AB6",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Sidestick2.usdc" : "E6B6EE82-1A07-4E99-A070-C01E1E816D87",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Sidestick_controller_L.usdc" : "A4377E15-94D3-4E87-A038-116CED4184E0",
+    "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Throttle 1.usdc" : "361A646C-56E5-4F59-9FDB-CD896F1D0651",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Mesh\/Throttle.usdc" : "EBE7C0D0-2163-40DA-A41F-1F944586386A",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Shaders\/PBR_Material.usda" : "0701B343-C7AA-401B-B68A-76C3DAF412CD",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/TechArt\/Shaders\/TestingFog.usda" : "B65644C9-1DBB-4C56-BF1C-3E8AD2B77DBF"
@@ -23,6 +25,7 @@
     "057DFC64-A90F-4C4E-AF94-E498458743D2" : 6247402169321205943,
     "0701B343-C7AA-401B-B68A-76C3DAF412CD" : 5276935801633657569,
     "0F51D2B6-8429-42F2-986A-AB3D854A6C9D" : 5194560530323450491,
+    "361A646C-56E5-4F59-9FDB-CD896F1D0651" : 5426014702148069230,
     "45F19B16-36D0-4D27-9197-6D4816859F05" : -5623081402802409368,
     "53A66839-0785-4C42-A205-1F1C26CBE2F2" : -4985712303040758095,
     "54E129BC-BF69-4DEC-BBA0-FC28D245A448" : -6298664733664356363,
@@ -34,6 +37,7 @@
     "B65644C9-1DBB-4C56-BF1C-3E8AD2B77DBF" : 6303910235212107631,
     "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD" : 6074190801434611045,
     "E6B6EE82-1A07-4E99-A070-C01E1E816D87" : -1868216045023732038,
+    "EB8C3891-42A6-4A86-87ED-EC33BAC384D4" : -5987134591488073410,
     "EBE7C0D0-2163-40DA-A41F-1F944586386A" : -4864208100343406553
   }
 }
