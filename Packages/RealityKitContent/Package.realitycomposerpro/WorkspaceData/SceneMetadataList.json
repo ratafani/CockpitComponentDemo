@@ -137,15 +137,6 @@
       [
         "0701B343-C7AA-401B-B68A-76C3DAF412CD",
         "Root",
-        "ORM_Texture"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "0701B343-C7AA-401B-B68A-76C3DAF412CD",
-        "Root",
         "Material"
       ],
       {
@@ -231,6 +222,34 @@
     "objectMetadataList" : [
       [
         "53A66839-0785-4C42-A205-1F1C26CBE2F2",
+        "root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
+        "root",
+        "SC_SideStickL_Rig_V01",
+        "SC_SideStickL_Button_Rig_V01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
+        "root",
+        "_materials",
+        "Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
         "root",
         "_materials"
       ],
@@ -262,24 +281,6 @@
         "53A66839-0785-4C42-A205-1F1C26CBE2F2",
         "root",
         "SC_SideStickL_Rig_V01",
-        "SC_SideStickL_Button_Rig_V01"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
-        "root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "53A66839-0785-4C42-A205-1F1C26CBE2F2",
-        "root",
-        "SC_SideStickL_Rig_V01",
         "SC_SideStickL_V01"
       ],
       {
@@ -290,6 +291,16 @@
   },
   "54E129BC-BF69-4DEC-BBA0-FC28D245A448" : {
     "objectMetadataList" : [
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "Cockpit4",
+        "Throttle_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
       [
         "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
         "Root",
@@ -329,6 +340,15 @@
       {
         "disallowsFraming" : true,
         "isExpanded" : false,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "Cockpit4"
+      ],
+      {
+        "isExpanded" : true,
         "isLocked" : false
       },
       [
@@ -422,6 +442,17 @@
         "Root",
         "SideStick",
         "SC_Sidestick_controller_L_3",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "54E129BC-BF69-4DEC-BBA0-FC28D245A448",
+        "Root",
+        "Cockpit4",
+        "Throttle_1",
         "_materials"
       ],
       {
@@ -532,17 +563,6 @@
       [
         "A2E2F63F-41AE-49A1-A9A3-EF6672972AB6",
         "root",
-        "SC_SideStickL_Rig_V01",
-        "Cube",
-        "Cube_001"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "A2E2F63F-41AE-49A1-A9A3-EF6672972AB6",
-        "root",
         "_materials"
       ],
       {
@@ -551,26 +571,7 @@
       },
       [
         "A2E2F63F-41AE-49A1-A9A3-EF6672972AB6",
-        "root",
-        "SC_SideStickL_Rig_V01",
-        "Cube"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "A2E2F63F-41AE-49A1-A9A3-EF6672972AB6",
         "root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "A2E2F63F-41AE-49A1-A9A3-EF6672972AB6",
-        "root",
-        "SC_SideStickL_Rig_V01"
       ],
       {
         "isExpanded" : true,

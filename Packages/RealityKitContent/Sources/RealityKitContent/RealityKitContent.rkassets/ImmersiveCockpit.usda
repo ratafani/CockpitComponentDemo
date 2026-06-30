@@ -443,6 +443,18 @@ def Xform "Root"
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Throttle_1"
+        {
+            over "_materials"
+            {
+                over "Throttle_TX" (
+                    references = None
+                )
+                {
+                }
+            }
+        }
     }
 }
 
