@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["SkySphere_mat", "SkySphere", "Material", "SideStick", "Cockpit4"]
+    reorder nameChildren = ["SkySphere_mat", "SkySphere", "Material", "SideStick", "Cockpit4", "Screen_1", "Screen_2"]
     def Material "SkySphere_mat" (
         references = </Root/SkySphere/SkySphere_mat>
     )
@@ -453,6 +453,66 @@ def Xform "Root"
                 )
                 {
                 }
+            }
+        }
+    }
+
+    def Cube "Screen_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0.27326298, -2.4932146e-7, 4.0769288e-7)
+        }
+    )
+    {
+        rel material:binding = </Root/Screen_1/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (0.9906804, 0.13620678, -9.5733675e-8, 2.1892632e-7)
+        float3 xformOp:scale = (2.4, 2.2, 0.1)
+        float3 xformOp:translate = (0.08248169, -1.0315552, 2.612118)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/Screen_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "Screen_2" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0.27326298, -2.4932146e-7, 4.0769288e-7)
+        }
+    )
+    {
+        rel material:binding = </Root/Screen_2/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (0.9906804, 0.13620701, -9.5733846e-8, 2.1892674e-7)
+        float3 xformOp:scale = (2.4, 2.1999998, 0.1)
+        float3 xformOp:translate = (-0.45574114, -1.0315528, 2.612118)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/Screen_2/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
             }
         }
     }
